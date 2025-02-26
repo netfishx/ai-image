@@ -15,7 +15,7 @@ deploy:
   only:
     - master
   script:
-    - docker pull 172.31.46.150:5555/ai-web:$CI_COMMIT_SHORT_SHA
+    - docker pull 18.163.249.24:5555/ai-web:$CI_COMMIT_SHORT_SHA
     - docker stop ai-web || true
     - docker rm ai-web || true
-    - docker run -d -p 4000:3000 --name ai-web --restart unless-stopped 172.31.46.150:5555/ai-web:$CI_COMMIT_SHORT_SHA
+    - docker run -d -p 4000:3000 --name ai-web --restart unless-stopped 18.163.249.24:5555/ai-web:$CI_COMMIT_SHORT_SHA
