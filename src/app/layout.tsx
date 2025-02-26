@@ -16,7 +16,7 @@ export default async function RootLayout({
 }>) {
   return (
     <ViewTransitions>
-      <html lang="en">
+      <html lang="en" className="dark">
         <body className="flex h-screen flex-col">
           <Suspense>{children}</Suspense>
         </body>

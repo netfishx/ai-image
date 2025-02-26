@@ -5,7 +5,7 @@ import { Link } from "next-view-transitions";
 export function Header() {
   return (
     <div
-      className="flex h-12 justify-between bg-cover px-2 text-background"
+      className="flex h-12 justify-between bg-cover px-2"
       style={getBackgroundImageStyle("nav")}
     >
       <div className="flex items-center justify-center gap-2">
@@ -13,7 +13,12 @@ export function Header() {
         <span>username</span>
       </div>
       <div className="flex items-center gap-2">
-        <Button className="rounded-full bg-background/20" size="sm" asChild>
+        <Button
+          className="rounded-full bg-white/20 backdrop-blur-sm"
+          variant="secondary"
+          size="sm"
+          asChild
+        >
           <Link href="/personal">个人中心</Link>
         </Button>
         <Link href="/personal">
