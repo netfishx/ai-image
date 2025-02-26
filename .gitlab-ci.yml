@@ -1,0 +1,21 @@
+build:
+  stage: build
+  tags:
+    - build
+  only:
+    - master
+  script:
+    - docker build -t 172.31.46.150:5555/ai-web:$CI_COMMIT_SHORT_SHA .
+    - docker push 172.31.46.150:5555/ai-web:$CI_COMMIT_SHORT_SHA
+
+deploy:
+  stage: deploy
+  tags:
+    - ai
+  only:
+    - master
+  script:
+    - docker pull 172.31.46.150:5555/ai-web:$CI_COMMIT_SHORT_SHA
+    - docker stop ai-web || true
+    - docker rm ai-web || true
+    - docker run -d -p 4000:3000 --name ai-web --restart unless-stopped 172.31.46.150:5555/ai-web:$CI_COMMIT_SHORT_SHA
