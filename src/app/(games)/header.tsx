@@ -1,10 +1,13 @@
+import { getBackgroundImageStyle } from "@/app/bg";
 import { Button } from "@/components/ui/button";
 import { House, MenuSquare } from "lucide-react";
-import Link from "next/link";
-
+import { Link } from "next-view-transitions";
 export function Header() {
   return (
-    <div className="flex h-12 justify-between bg-[url('https://res.meiyan88.com/ai-v2/nav_bg.jpg')] bg-cover px-2 text-background">
+    <div
+      className="flex h-12 justify-between bg-cover px-2 text-background"
+      style={getBackgroundImageStyle("nav")}
+    >
       <div className="flex items-center justify-center gap-2">
         <House />
         <span>username</span>

@@ -2,6 +2,7 @@
 
 import type { Metadata } from "next";
 import "./globals.css";
+import { ViewTransitions } from "next-view-transitions";
 import { type ReactNode, Suspense } from "react";
 export const metadata: Metadata = {
   title: "AI Web",
@@ -14,10 +15,12 @@ export default async function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="flex h-screen flex-col">
-        <Suspense>{children}</Suspense>
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang="en">
+        <body className="flex h-screen flex-col">
+          <Suspense>{children}</Suspense>
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }
