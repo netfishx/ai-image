@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@devnomic/marquee": "^1.0.3",
+    "@jsonjoy.com/json-pack": "^1.1.1",
     "@radix-ui/react-checkbox": "^1.1.4",
     "@radix-ui/react-label": "^2.1.2",
     "@radix-ui/react-scroll-area": "^1.2.3",
@@ -22,6 +23,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.476.0",
+    "lz-string": "^1.5.0",
     "next": "15.2.1-canary.0",
     "next-themes": "^0.4.4",
     "next-view-transitions": "^0.3.4",
@@ -30,7 +32,8 @@
     "react-dom": "^19.0.0",
     "sonner": "^2.0.1",
     "tailwind-merge": "^3.0.2",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",

@@ -80,7 +80,7 @@ async function request<T>({
     headers["X-Forwarded-For"] = result;
   }
   if (token) {
-    headers.Authorization = `Bearer ${token}`;
+    headers.token = token;
   }
 
   let result: {
