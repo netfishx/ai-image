@@ -1,6 +1,6 @@
 import sample from "@/assets/sample2.jpg";
 import { Button } from "@/components/ui/button";
-import UploadButton from "@/components/upload";
+import Upload from "@/components/upload";
 import { Minus } from "lucide-react";
 import Image from "next/image";
 export default function Yjty() {
@@ -11,7 +11,7 @@ export default function Yjty() {
         请上传您需要脱衣的图片
       </div>
       <div>
-        <UploadButton />
+        <Upload type="image" />
       </div>
       <div className="flex justify-center px-8">
         <Button className="w-full">立刻制作</Button>

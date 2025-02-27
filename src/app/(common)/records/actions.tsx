@@ -12,8 +12,10 @@ export function Actions() {
     <>
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="sm" className="px-0">
-            下载作品
+          <Button variant="ghost" size="sm" className="px-0" asChild>
+            <a href="/records/download" target="_blank" rel="noreferrer">
+              下载作品
+            </a>
           </Button>
           <Button variant="ghost" size="sm" className="px-0">
             删除作品

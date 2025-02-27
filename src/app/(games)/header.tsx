@@ -21,7 +21,7 @@ export function Header() {
         >
           <Link href="/personal">个人中心</Link>
         </Button>
-        <Link href="/personal">
+        <Link href="/records">
           <MenuSquare className="opacity-50" />
         </Link>
       </div>

@@ -1,6 +1,6 @@
 import sample from "@/assets/sample2.jpg";
 import { Button } from "@/components/ui/button";
-import UploadButton from "@/components/upload";
+import Upload from "@/components/upload";
 import { Minus } from "lucide-react";
 import Image from "next/image";
 export default function VideoPage() {
@@ -8,10 +8,17 @@ export default function VideoPage() {
     <div className="flex flex-1 flex-col gap-4 px-2 py-4">
       <div className="flex items-center gap-2">
         <Minus className="rotate-90" />
-        请上传您需要制作视频的图片
+        请上传原视频
       </div>
       <div>
-        <UploadButton />
+        <Upload type="video" />
+      </div>
+      <div className="flex items-center gap-2">
+        <Minus className="rotate-90" />
+        请上传脸部照片
+      </div>
+      <div>
+        <Upload type="image" />
       </div>
       <div className="flex justify-center px-8">
         <Button className="w-full">立刻制作</Button>
