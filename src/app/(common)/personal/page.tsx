@@ -37,14 +37,14 @@ export default function Personal() {
             variant="outline"
             size="sm"
             asChild
-            className="rounded-full border-black/50 bg-transparent opacity-50"
+            className="bg-transparent opacity-50"
           >
             <Link href="/login">登录账号</Link>
           </Button>
         </div>
         <div className="flex items-center justify-between">
           <span className="text-lg">普通用户</span>
-          <Button className="rounded-full bg-amber-500 text-lg" size="lg">
+          <Button className="bg-amber-500 text-lg" size="lg">
             成为VIP
           </Button>
         </div>

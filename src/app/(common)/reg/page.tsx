@@ -39,9 +39,7 @@ export default function Login() {
             required
           />
         </div>
-        <Button className="w-2/3 rounded-full bg-blue-500 text-foreground">
-          注册
-        </Button>
+        <Button className="w-full">注册</Button>
       </div>
     </div>
   );

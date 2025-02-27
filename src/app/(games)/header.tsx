@@ -14,7 +14,7 @@ export function Header() {
       </div>
       <div className="flex items-center gap-2">
         <Button
-          className="rounded-full bg-white/20 backdrop-blur-sm"
+          className="bg-foreground/20 backdrop-blur-sm"
           variant="secondary"
           size="sm"
           asChild

@@ -24,7 +24,7 @@
     --border: oklch(93% 0.02 260);
     --input: oklch(93% 0.02 260);
     --ring: oklch(50% 0.25 260);
-    --radius: 0.625rem;
+    --radius: 1rem;
   }
 
   .dark {
@@ -35,7 +35,7 @@
     --popover: oklch(20% 0.04 260);
     --popover-foreground: oklch(97% 0.005 260);
     --primary: oklch(60% 0.22 260);
-    --primary-foreground: oklch(21% 0.04 260);
+    --primary-foreground: oklch(97% 0.005 260);
     --secondary: oklch(28% 0.04 260);
     --secondary-foreground: oklch(97% 0.005 260);
     --muted: oklch(28% 0.04 260);
