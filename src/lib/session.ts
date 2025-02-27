@@ -1,3 +1,4 @@
+import { type User, UserSchema } from "@/lib/types";
 import { CborDecoderBase } from "@jsonjoy.com/json-pack/lib/cbor/CborDecoderBase";
 import { CborEncoder } from "@jsonjoy.com/json-pack/lib/cbor/CborEncoder";
 import LZString from "lz-string";
@@ -7,17 +8,7 @@ import { z } from "zod";
 const encoder = new CborEncoder();
 const decoder = new CborDecoderBase();
 
-const expiresTime = 24 * 60 * 60 * 1000;
-
-export const UserSchema = z.object({
-  id: z.string(),
-  mainId: z.string(),
-  username: z.string(),
-  inviteCode: z.string().nullish(),
-  token: z.string(),
-});
-
-type User = z.infer<typeof UserSchema>;
+const expiresTime = 7 * 24 * 60 * 60 * 1000;
 
 const SessionSchema = UserSchema.extend({
   expires: z.string(),
