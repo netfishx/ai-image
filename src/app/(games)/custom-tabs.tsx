@@ -10,7 +10,7 @@ export function CustomTabs() {
     <Tabs>
       <TabsList className="grid w-full grid-cols-4 gap-2">
         <Link
-          data-state={pathname === "/yjty" ? "active" : "inactive"}
+          data-state={["/yjty", "/"].includes(pathname) ? "active" : "inactive"}
           href="/yjty"
           className="inline-flex items-center justify-center whitespace-nowrap rounded-full p-1 font-medium text-sm transition-all focus-visible:outline-hidden focus-visible:ring focus-visible:ring-ring data-[state=active]:pointer-events-none data-[state=active]:bg-primary data-[state=active]:text-foreground data-[state=active]:shadow-sm"
         >

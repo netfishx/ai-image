@@ -14,7 +14,7 @@ export default function RecordsPage() {
         {[1, 2, 3].map((item) => (
           <div
             key={item}
-            className="flex flex-col gap-2 rounded-sm border bg-card-foreground py-4 text-card shadow-sm *:px-6"
+            className="flex flex-col gap-2 rounded-sm border bg-card-foreground py-2 text-card shadow-sm *:px-6"
           >
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
