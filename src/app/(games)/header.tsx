@@ -5,7 +5,7 @@ import { Link } from "next-view-transitions";
 export function Header() {
   return (
     <div
-      className="flex h-12 justify-between bg-cover px-2"
+      className="flex h-12 shrink-0 justify-between bg-cover px-2"
       style={getBackgroundImageStyle("nav")}
     >
       <div className="flex items-center justify-center gap-2">

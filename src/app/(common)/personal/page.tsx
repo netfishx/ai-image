@@ -54,7 +54,7 @@ export default function Personal() {
           <Share2 />
           分享推广
         </Link>
-        <Link href="#">
+        <Link href="/records">
           <ReceiptText />
           制作记录
         </Link>

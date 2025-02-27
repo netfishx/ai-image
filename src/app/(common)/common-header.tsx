@@ -19,12 +19,15 @@ export function CommonHeader() {
     case "/reg":
       title = "注册账号";
       break;
+    case "/records":
+      title = "AI制作记录";
+      break;
     default:
       title = "";
   }
   return (
     <div
-      className="flex h-12 items-center bg-cover px-2"
+      className="flex h-12 shrink-0 items-center bg-cover px-2"
       style={getBackgroundImageStyle("nav")}
     >
       <Button onClick={() => router.back()} variant="ghost" size="icon">
