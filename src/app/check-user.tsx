@@ -1,11 +1,11 @@
-import { guestLogin } from "@/lib/api";
-import { getSession } from "@/lib/session";
+"use client";
 
-export async function CheckUser() {
-  const session = await getSession();
-  if (!session) {
-    const res = await guestLogin();
-    console.info("guset login:", res);
-  }
+import { checkUser } from "@/lib/api";
+import { useEffect } from "react";
+
+export function CheckUser() {
+  useEffect(() => {
+    checkUser();
+  }, []);
   return null;
 }

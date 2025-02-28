@@ -6,6 +6,13 @@ import { redirect } from "next/navigation";
 import { apiRequest } from "./request";
 import { getSession, setSession } from "./session";
 
+export async function checkUser() {
+  const session = await getSession();
+  if (!session) {
+    await guestLogin();
+  }
+}
+
 export async function guestLogin() {
   const res = await apiRequest<User>({
     url: "/api/account/v1/tourist",
@@ -17,12 +24,12 @@ export async function guestLogin() {
   return res;
 }
 
-export async function login(username: string, password: string) {
+export async function login(userName: string, password: string) {
   const res = await apiRequest<User>({
     url: "/api/account/v1/login",
     method: "POST",
     data: {
-      userName: username,
+      userName,
       password,
     },
   });
@@ -33,12 +40,12 @@ export async function login(username: string, password: string) {
   return res;
 }
 
-export async function register(username: string, password: string) {
+export async function register(userName: string, password: string) {
   const res = await apiRequest<User>({
     url: "/api/account/v1/register",
     method: "POST",
     data: {
-      userName: username,
+      userName,
       password,
     },
   });

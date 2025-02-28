@@ -18,9 +18,9 @@ export function LoginForm() {
         return;
       }
       const formData = new FormData(formRef.current);
-      const username = formData.get("username") as string;
+      const userName = formData.get("userName") as string;
       const password = formData.get("password") as string;
-      const res = await login(username, password);
+      const res = await login(userName, password);
       if (res.code !== 0) {
         toast.error(res?.msg ?? "登录失败");
       }
@@ -31,10 +31,10 @@ export function LoginForm() {
     <Form action="" onSubmit={handleSubmit} ref={formRef}>
       <div className="flex flex-col items-center gap-6 p-4">
         <div className="grid w-full gap-2">
-          <Label htmlFor="username">用户名</Label>
+          <Label htmlFor="userName">用户名</Label>
           <Input
-            id="username"
-            name="username"
+            id="userName"
+            name="userName"
             placeholder="请输入用户名"
             className="h-12 bg-foreground/20 backdrop-blur-sm"
             required

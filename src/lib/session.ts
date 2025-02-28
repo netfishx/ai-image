@@ -24,6 +24,16 @@ function signToken(payload: SessionData) {
 }
 
 function verifyToken(input: string) {
+  console.info(
+    123,
+    decoder.decode(
+      new Uint8Array(
+        LZString.decompressFromEncodedURIComponent(input)
+          .split("")
+          .map((c) => c.charCodeAt(0)),
+      ),
+    ),
+  );
   return SessionSchema.parse(
     decoder.decode(
       new Uint8Array(

@@ -31,7 +31,7 @@ export default function Personal() {
               alt="avatar"
               className="rounded-full"
             />
-            username
+            userName
           </div>
           <Button
             variant="outline"
