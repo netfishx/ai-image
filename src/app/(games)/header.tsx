@@ -1,7 +1,9 @@
 import { getBackgroundImageStyle } from "@/app/bg";
 import { Button } from "@/components/ui/button";
+import { getSession } from "@/lib/session";
 import { House, MenuSquare } from "lucide-react";
 import { Link } from "next-view-transitions";
+import { Suspense } from "react";
 export function Header() {
   return (
     <div
@@ -10,7 +12,9 @@ export function Header() {
     >
       <div className="flex items-center justify-center gap-2">
         <House />
-        <span>username</span>
+        <Suspense>
+          <UserName />
+        </Suspense>
       </div>
       <div className="flex items-center gap-2">
         <Button
@@ -27,4 +31,10 @@ export function Header() {
       </div>
     </div>
   );
+}
+
+async function UserName() {
+  const session = await getSession();
+  const userName = session?.username;
+  return <span>{userName ?? "username"}</span>;
 }

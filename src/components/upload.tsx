@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { FileVideoIcon, ImageIcon, X } from "lucide-react";
 import Image from "next/image";
 import { type ChangeEvent, useState } from "react";
@@ -12,12 +13,14 @@ interface UploadButtonProps {
   type?: FileType;
   maxSize?: number; // 单位：MB
   onFileSelect?: (file: File) => void;
+  name: string;
 }
 
 export default function Upload({
   type = "both",
-  maxSize = 10,
+  maxSize = 5,
   onFileSelect,
+  name,
 }: UploadButtonProps) {
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [fileType, setFileType] = useState<UploadFileType>(null);
@@ -102,59 +105,60 @@ export default function Upload({
 
   return (
     <div className="flex flex-col items-center">
-      {previewUrl ? (
-        <div className="relative bg-white">
-          {fileType === "image" ? (
-            <Image
-              src={previewUrl}
-              alt="Uploaded image preview"
-              width={256}
-              height={160}
-              className="h-40 w-64 rounded-lg object-cover"
-            />
-          ) : (
-            <video
-              src={previewUrl}
-              controls
-              className="h-40 w-64 rounded-lg object-cover"
-            >
-              <track kind="captions" />
-            </video>
-          )}
-          <button
-            type="button"
-            onClick={removeFile}
-            className="absolute top-1 right-1 rounded-full bg-red-500 p-1 text-white"
-          >
-            <X size={16} />
-          </button>
-        </div>
-      ) : (
-        <label
-          className={
-            "relative flex h-40 w-64 cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed bg-gray-100 transition-colors hover:bg-gray-200"
-          }
-        >
-          <input
-            type="file"
-            className="hidden"
-            accept={getAcceptTypes()}
-            onChange={handleFileInput}
+      <div className={cn("relative bg-white", previewUrl ? "block" : "hidden")}>
+        {fileType === "image" ? (
+          <Image
+            // biome-ignore lint/style/noNonNullAssertion: <explanation>
+            src={previewUrl!}
+            alt="Uploaded image preview"
+            width={256}
+            height={160}
+            className="h-40 w-64 rounded-lg object-cover"
           />
-          <div className="flex space-x-2">
-            {(type === "image" || type === "both") && (
-              <ImageIcon className="h-10 w-10 text-blue-500" />
-            )}
-            {(type === "video" || type === "both") && (
-              <FileVideoIcon className="h-10 w-10 text-blue-500" />
-            )}
-          </div>
-          <div className="mt-2 text-gray-600 text-sm">{getUploadText()}</div>
-          <div className="mt-1 text-gray-500 text-xs">
-            文件大小不要超过{maxSize}MB
-          </div>
-        </label>
-      )}
+        ) : (
+          <video
+            // biome-ignore lint/style/noNonNullAssertion: <explanation>
+            src={previewUrl!}
+            controls
+            className="h-40 w-64 rounded-lg object-cover"
+          >
+            <track kind="captions" />
+          </video>
+        )}
+        <button
+          type="button"
+          onClick={removeFile}
+          className="absolute top-1 right-1 rounded-full bg-red-500 p-1 text-white"
+        >
+          <X size={16} />
+        </button>
+      </div>
+      <label
+        className={cn(
+          "relative h-40 w-64 cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed bg-gray-100 transition-colors hover:bg-gray-200",
+          previewUrl ? "hidden" : "flex",
+        )}
+      >
+        <input
+          type="file"
+          className="hidden"
+          accept={getAcceptTypes()}
+          onChange={handleFileInput}
+          name={name}
+        />
+        <div className="flex space-x-2">
+          {(type === "image" || type === "both") && (
+            <ImageIcon className="h-10 w-10 text-blue-500" />
+          )}
+          {(type === "video" || type === "both") && (
+            <FileVideoIcon className="h-10 w-10 text-blue-500" />
+          )}
+        </div>
+        <div className="mt-2 text-gray-600 text-sm">{getUploadText()}</div>
+        <div className="mt-1 text-gray-500 text-xs">
+          文件大小不要超过{maxSize}MB
+        </div>
+      </label>
     </div>
   );
 }

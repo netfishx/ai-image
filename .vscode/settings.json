@@ -18,8 +18,11 @@
   "[typescriptreact]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "i18n-ally.localesPaths": ["./messages"],
-  "i18n-ally.keystyle": "nested",
-  "i18n-ally.sourceLanguage": "zh"
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
