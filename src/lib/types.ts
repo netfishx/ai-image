@@ -12,3 +12,10 @@ export const UserSchema = z.object({
 });
 
 export type User = z.infer<typeof UserSchema>;
+
+export type Record = {
+  id: number;
+  name: string;
+  createdAt: string;
+  status: string;
+};

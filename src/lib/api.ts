@@ -1,4 +1,6 @@
-import type { User } from "@/lib/types";
+"use server";
+
+import type { Record, User } from "@/lib/types";
 import { redirect } from "next/navigation";
 import { apiRequest } from "./request";
 import { setSession } from "./session";
@@ -43,4 +45,11 @@ export async function register(username: string, password: string) {
     await setSession(res.data);
   }
   return res;
+}
+
+export async function getRecords() {
+  const res = await apiRequest<Record[]>({
+    url: "/api/record/v1/list",
+  });
+  return [1, 2, 3];
 }
