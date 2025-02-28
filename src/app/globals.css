@@ -24,7 +24,7 @@
     --border: oklch(93% 0.02 260);
     --input: oklch(93% 0.02 260);
     --ring: oklch(50% 0.25 260);
-    --radius: 1rem;
+    --radius: 0.625rem;
   }
 
   .dark {
