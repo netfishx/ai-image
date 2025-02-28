@@ -1,4 +1,5 @@
 import type { User } from "@/lib/types";
+import { redirect } from "next/navigation";
 import { apiRequest } from "./request";
 import { setSession } from "./session";
 
@@ -24,6 +25,7 @@ export async function login(username: string, password: string) {
   });
   if (res.code === 0 && res.data) {
     await setSession(res.data);
+    return redirect("/");
   }
   return res;
 }
