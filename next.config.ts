@@ -44,6 +44,14 @@ const nextConfig: NextConfig = {
     useCache: true,
   },
   output: "standalone",
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "aitools888.s3.ap-east-1.amazonaws.com",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

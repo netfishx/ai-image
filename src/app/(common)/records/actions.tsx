@@ -1,5 +1,4 @@
 "use client";
-import head from "@/assets/head.png";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
@@ -7,16 +6,20 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 
-export function Actions() {
+export function Actions({ url }: { url: string | null }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="sm" className="px-0" asChild>
-            <a href="/records/download" target="_blank" rel="noreferrer">
-              下载作品
-            </a>
+            {url ? (
+              <a href={url} target="_blank" rel="noreferrer">
+                下载作品
+              </a>
+            ) : (
+              "下载作品"
+            )}
           </Button>
           <Button variant="ghost" size="sm" className="px-0">
             删除作品
@@ -27,6 +30,7 @@ export function Actions() {
           size="sm"
           className="group flex items-center gap-1 px-0 hover:opacity-80"
           onClick={() => setIsOpen(!isOpen)}
+          disabled={!url}
         >
           点击查看
           {isOpen ? (
@@ -45,7 +49,7 @@ export function Actions() {
       >
         <div className="flex items-center justify-center">
           <Image
-            src={head}
+            src={url ?? ""}
             alt="review"
             width={300}
             className={cn("transform transition-transform duration-500")}

@@ -60,10 +60,13 @@ export async function register(userName: string, password: string) {
 }
 
 export async function getRecords() {
+  const session = await getSession();
+  const token = session?.token;
   const res = await apiRequest<Record[]>({
-    url: "/api/record/v1/list",
+    url: "/api/order/v1/queryOrder",
+    token,
   });
-  return [1, 2, 3];
+  return res.data;
 }
 
 export async function upload(data: FormData) {
