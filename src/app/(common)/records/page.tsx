@@ -1,4 +1,5 @@
 import { getBackgroundImageStyle } from "@/app/bg";
+import { Time } from "@/components/time";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { getRecords } from "@/lib/api";
@@ -41,7 +42,7 @@ async function List() {
               <div className="flex flex-col">
                 <span>{item.orderName}</span>
                 <span className="text-xs">
-                  {new Date(item.createdAt).toLocaleString()}
+                  <Time time={item.createdTime} />
                 </span>
               </div>
             </div>
