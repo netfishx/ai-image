@@ -1,4 +1,4 @@
-FROM oven/bun:1-slim AS base
+FROM imbios/bun-node:22-slim AS base
 
 WORKDIR /app
 
@@ -39,4 +39,4 @@ EXPOSE 3000
 
 ENV PORT=3000
 
-CMD ["bun", "server.js"]
+CMD ["node", "server.js"]

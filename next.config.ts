@@ -26,7 +26,7 @@ const nextConfig: NextConfig = {
     removeConsole:
       process.env.NODE_ENV === "production"
         ? {
-            exclude: ["error", "dir", "group", "groupEnd"],
+            exclude: ["warn", "error", "dir", "group", "groupEnd"],
           }
         : false,
   },
@@ -39,7 +39,7 @@ const nextConfig: NextConfig = {
     dynamicIO: true,
     authInterrupts: true,
     serverActions: {
-      bodySizeLimit: "5mb",
+      bodySizeLimit: "10mb",
     },
     useCache: true,
   },

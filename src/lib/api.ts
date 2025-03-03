@@ -128,13 +128,13 @@ export async function videoConversion(imageKey: string, videoKey: string) {
   });
 }
 
-export async function takeOff(imageKey: string) {
+export async function takeOff(key: string) {
   const session = await getSession();
   const token = session?.token;
   return await apiRequest({
     url: "/api/processing/v1/takeOff",
     method: "POST",
     token,
-    data: { imageKey },
+    data: { key },
   });
 }
