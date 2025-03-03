@@ -1,6 +1,6 @@
 import { getBackgroundImageStyle } from "@/app/bg";
 import { Button } from "@/components/ui/button";
-import { getSession } from "@/lib/session";
+import { UserName } from "@/components/user-name";
 import { House, MenuSquare } from "lucide-react";
 import { Link } from "next-view-transitions";
 import { Suspense } from "react";
@@ -31,10 +31,4 @@ export function Header() {
       </div>
     </div>
   );
-}
-
-async function UserName() {
-  const session = await getSession();
-  const userName = session?.userName;
-  return <span>{userName ?? ""}</span>;
 }

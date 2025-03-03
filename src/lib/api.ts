@@ -41,9 +41,12 @@ export async function login(userName: string, password: string) {
 }
 
 export async function register(userName: string, password: string) {
+  const session = await getSession();
+  const token = session?.token;
   const res = await apiRequest<User>({
     url: "/api/account/v1/register",
     method: "POST",
+    token,
     data: {
       userName,
       password,
@@ -51,6 +54,7 @@ export async function register(userName: string, password: string) {
   });
   if (res.code === 0 && res.data) {
     await setSession(res.data);
+    return redirect("/");
   }
   return res;
 }

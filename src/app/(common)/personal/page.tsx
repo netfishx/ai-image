@@ -1,6 +1,7 @@
 import { getBackgroundImageStyle } from "@/app/bg";
 import head from "@/assets/head.png";
 import { Button } from "@/components/ui/button";
+import { UserName } from "@/components/user-name";
 import {
   Contact,
   IdCard,
@@ -11,6 +12,7 @@ import {
 } from "lucide-react";
 import { Link } from "next-view-transitions";
 import Image from "next/image";
+import { Suspense } from "react";
 
 export default function Personal() {
   return (
@@ -31,7 +33,9 @@ export default function Personal() {
               alt="avatar"
               className="rounded-full"
             />
-            userName
+            <Suspense>
+              <UserName />
+            </Suspense>
           </div>
           <Button
             variant="outline"
