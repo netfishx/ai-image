@@ -18,27 +18,29 @@ export function Actions({ url }: { url: string | null }) {
                 下载作品
               </a>
             ) : (
-              "下载作品"
+              <span>下载作品</span>
             )}
           </Button>
           <Button variant="ghost" size="sm" className="px-0">
             删除作品
           </Button>
         </div>
-        <Button
-          variant="ghost"
-          size="sm"
-          className="group flex items-center gap-1 px-0 hover:opacity-80"
-          onClick={() => setIsOpen(!isOpen)}
-          disabled={!url}
-        >
-          点击查看
-          {isOpen ? (
-            <ChevronUp className="h-4 w-4 transition-transform duration-300" />
-          ) : (
-            <ChevronDown className="h-4 w-4 transition-transform duration-300" />
-          )}
-        </Button>
+        {url && (
+          <Button
+            variant="ghost"
+            size="sm"
+            className="group flex items-center gap-1 px-0 hover:opacity-80"
+            onClick={() => setIsOpen(!isOpen)}
+            disabled={!url}
+          >
+            点击查看
+            {isOpen ? (
+              <ChevronUp className="h-4 w-4 transition-transform duration-300" />
+            ) : (
+              <ChevronDown className="h-4 w-4 transition-transform duration-300" />
+            )}
+          </Button>
+        )}
       </div>
       <Separator className={cn(isOpen ? "opacity-20" : "hidden")} />
       <div
