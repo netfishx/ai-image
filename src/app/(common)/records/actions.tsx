@@ -56,7 +56,7 @@ export function Actions({ url }: { url: string | null }) {
                 src={url}
                 alt="review"
                 width={300}
-                className={cn("transform transition-transform duration-500")}
+                className="transform transition-transform duration-500"
               />
             </div>
           </div>
