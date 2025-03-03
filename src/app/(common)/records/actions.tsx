@@ -42,22 +42,26 @@ export function Actions({ url }: { url: string | null }) {
           </Button>
         )}
       </div>
-      <Separator className={cn(isOpen ? "opacity-20" : "hidden")} />
-      <div
-        className={cn(
-          "overflow-hidden transition-all duration-500 ease-in-out",
-          isOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0",
-        )}
-      >
-        <div className="flex items-center justify-center">
-          <Image
-            src={url ?? ""}
-            alt="review"
-            width={300}
-            className={cn("transform transition-transform duration-500")}
-          />
-        </div>
-      </div>
+      {url && (
+        <>
+          <Separator className={cn(isOpen ? "opacity-20" : "hidden")} />
+          <div
+            className={cn(
+              "overflow-hidden transition-all duration-500 ease-in-out",
+              isOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0",
+            )}
+          >
+            <div className="flex items-center justify-center">
+              <Image
+                src={url}
+                alt="review"
+                width={300}
+                className={cn("transform transition-transform duration-500")}
+              />
+            </div>
+          </div>
+        </>
+      )}
     </>
   );
 }
