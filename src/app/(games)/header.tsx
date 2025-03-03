@@ -36,5 +36,5 @@ export function Header() {
 async function UserName() {
   const session = await getSession();
   const userName = session?.userName;
-  return <span>{userName ?? "userName"}</span>;
+  return <span>{userName ?? ""}</span>;
 }
