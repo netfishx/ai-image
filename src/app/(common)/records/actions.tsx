@@ -1,13 +1,31 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { deleteOrder } from "@/lib/api";
 import { cn } from "@/lib/utils";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, Loader2 } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
-
-export function Actions({ url }: { url: string | null }) {
+import { useRouter } from "next/navigation";
+import { useState, useTransition } from "react";
+import { toast } from "sonner";
+export function Actions({
+  url,
+  businessId,
+}: { url: string | null; businessId: string }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isPending, startTransition] = useTransition();
+  const router = useRouter();
+  async function handleDeleteOrder() {
+    startTransition(async () => {
+      const res = await deleteOrder(businessId);
+      if (res.code === 0) {
+        toast.success("删除成功");
+        router.refresh();
+      } else {
+        toast.error(res.msg);
+      }
+    });
+  }
   return (
     <>
       <div className="flex items-center justify-between">
@@ -21,7 +39,14 @@ export function Actions({ url }: { url: string | null }) {
               <span>下载作品</span>
             )}
           </Button>
-          <Button variant="ghost" size="sm" className="px-0">
+          <Button
+            variant="ghost"
+            size="sm"
+            className="px-0"
+            onClick={handleDeleteOrder}
+            disabled={isPending}
+          >
+            {isPending && <Loader2 className="animate-spin" />}
             删除作品
           </Button>
         </div>

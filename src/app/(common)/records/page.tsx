@@ -51,7 +51,7 @@ async function List() {
             </div>
           </div>
           <Separator className="opacity-20" />
-          <Actions url={item.processingResult} />
+          <Actions url={item.processingResult} businessId={item.businessId} />
         </div>
       ))}
     </>

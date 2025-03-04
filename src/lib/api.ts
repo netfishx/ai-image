@@ -138,3 +138,14 @@ export async function takeOff(key: string) {
     data: { key },
   });
 }
+
+export async function deleteOrder(businessId: string) {
+  const session = await getSession();
+  const token = session?.token;
+  return await apiRequest({
+    url: "/api/order/v1/deleteOrder",
+    method: "POST",
+    token,
+    data: { businessId },
+  });
+}
