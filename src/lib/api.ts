@@ -35,7 +35,7 @@ export async function login(userName: string, password: string) {
   });
   if (res.code === 0 && res.data) {
     await setSession(res.data);
-    return redirect("/");
+    return redirect("/yjty");
   }
   return res;
 }
@@ -54,7 +54,7 @@ export async function register(userName: string, password: string) {
   });
   if (res.code === 0 && res.data) {
     await setSession(res.data);
-    return redirect("/");
+    return redirect("/yjty");
   }
   return res;
 }
