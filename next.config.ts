@@ -39,7 +39,7 @@ const nextConfig: NextConfig = {
     dynamicIO: true,
     authInterrupts: true,
     serverActions: {
-      bodySizeLimit: "10mb",
+      bodySizeLimit: "200mb",
     },
     useCache: true,
   },
