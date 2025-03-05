@@ -51,7 +51,11 @@ async function List() {
             </div>
           </div>
           <Separator className="opacity-20" />
-          <Actions url={item.processingResult} businessId={item.businessId} />
+          <Actions
+            url={item.processingResult}
+            businessId={item.businessId}
+            isVideo={item.businessTypeId === 4}
+          />
         </div>
       ))}
     </>

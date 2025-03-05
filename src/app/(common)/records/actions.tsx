@@ -11,7 +11,12 @@ import { toast } from "sonner";
 export function Actions({
   url,
   businessId,
-}: { url: string | null; businessId: string }) {
+  isVideo,
+}: {
+  url: string | null;
+  businessId: string;
+  isVideo: boolean;
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
@@ -77,13 +82,17 @@ export function Actions({
             )}
           >
             <div className="flex items-center justify-center">
-              <Image
-                src={url}
-                alt="review"
-                width={300}
-                height={300}
-                className="transform transition-transform duration-500"
-              />
+              {isVideo ? (
+                <video src={url} controls muted />
+              ) : (
+                <Image
+                  src={url}
+                  alt="review"
+                  width={300}
+                  height={300}
+                  className="transform transition-transform duration-500"
+                />
+              )}
             </div>
           </div>
         </>
