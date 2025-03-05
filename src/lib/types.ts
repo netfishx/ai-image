@@ -18,7 +18,7 @@ export type Record = {
   businessTypeId: number;
   orderName: string;
   createdTime: string;
-  productionStatus: string;
+  productionStatus: number;
   processingResult: string;
   originalMaterial: string;
 };

@@ -47,7 +47,7 @@ async function List() {
               </div>
             </div>
             <div className="text-sm">
-              {item.productionStatus === "2" ? "制作成功" : "制作中"}
+              {item.productionStatus === 2 ? "制作成功" : "制作中"}
             </div>
           </div>
           <Separator className="opacity-20" />
