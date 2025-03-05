@@ -80,7 +80,7 @@ export async function upload(data: FormData) {
       "Content-Type": "multipart/form-data",
       token,
     },
-    maxBodyLength: 5 * 1024 * 1024,
+    maxBodyLength: 1024 * 1024 * 1024,
   });
   console.group("upload");
   console.dir(res.data, { depth: null });
