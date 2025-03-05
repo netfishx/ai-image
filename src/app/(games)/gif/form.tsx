@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import Upload from "@/components/upload";
-import { imageConversion, upload } from "@/lib/api";
+import { gifConversion, upload } from "@/lib/api";
 import { Loader2, Minus } from "lucide-react";
 import Form from "next/form";
 import { type FormEvent, useRef, useTransition } from "react";
@@ -39,7 +39,7 @@ export function GifForm() {
         toast.error(bRes.msg ?? "上传失败");
         return;
       }
-      const res = await imageConversion(aRes.data ?? "", bRes.data ?? "");
+      const res = await gifConversion(aRes.data ?? "", bRes.data ?? "");
       console.info(res);
       if (res.code !== 0) {
         toast.error(res.msg ?? "上传失败");
