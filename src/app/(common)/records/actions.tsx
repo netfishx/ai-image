@@ -7,6 +7,7 @@ import { ChevronDown, ChevronUp, Loader2 } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
+import ReactPlayer from "react-player";
 import { toast } from "sonner";
 export function Actions({
   url,
@@ -83,7 +84,7 @@ export function Actions({
           >
             <div className="flex items-center justify-center">
               {isVideo ? (
-                <video src={url} controls muted />
+                <ReactPlayer url={url} controls muted playing />
               ) : (
                 <Image
                   src={url}
