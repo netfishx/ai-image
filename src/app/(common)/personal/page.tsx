@@ -13,6 +13,7 @@ import {
 import { Link } from "next-view-transitions";
 import Image from "next/image";
 import { Suspense } from "react";
+import { RefreshButton } from "./refresh";
 
 export default function Personal() {
   return (
@@ -41,16 +42,49 @@ export default function Personal() {
             variant="outline"
             size="sm"
             asChild
-            className="bg-transparent opacity-50"
+            className="rounded-full bg-transparent opacity-50"
           >
             <Link href="/login">登录账号</Link>
           </Button>
         </div>
         <div className="flex items-center justify-between">
           <span className="text-lg">普通用户</span>
-          <Button className="bg-amber-500 text-lg" size="lg">
+          <Button className="rounded-full bg-amber-500 text-lg" size="lg">
             成为VIP
           </Button>
+        </div>
+      </div>
+      <div
+        className="flex flex-col gap-1 rounded-lg bg-background bg-cover p-4"
+        style={getBackgroundImageStyle("wallet")}
+      >
+        <div className="flex items-center justify-between">
+          <div>我的钱包</div>
+          <div className="flex gap-2">
+            <Button size="sm" className="rounded-full bg-yellow-500">
+              立即充值
+            </Button>
+            <Button size="sm" className="rounded-full bg-blue-400">
+              交易记录
+            </Button>
+          </div>
+        </div>
+        <div className="flex items-center gap-1 text-sm">
+          <span className="text-amber-500 text-xl">10.00</span>
+          金币
+          <RefreshButton />
+          <span className="text-xs opacity-60">充值如有延迟，请多刷新几次</span>
+        </div>
+        <div className="grid grid-cols-2 text-xs">
+          <span>
+            <span className="opacity-60">剩余图片换脸次数：</span>0
+          </span>
+          <span>
+            <span className="opacity-60">剩余视频换脸次数：</span>0
+          </span>
+          <span>
+            <span className="opacity-60">剩余一键脱衣次数：</span>0
+          </span>
         </div>
       </div>
       <div className="grid grid-cols-3 gap-2 *:flex *:aspect-square *:flex-col *:items-center *:justify-center *:gap-2 *:rounded-lg *:bg-slate-800 *:p-4">

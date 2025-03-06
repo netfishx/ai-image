@@ -1,6 +1,7 @@
 import mainBg from "@/assets/main.jpg";
 import navBg from "@/assets/nav.jpg";
 import vipBg from "@/assets/vip.jpg";
+import walletBg from "@/assets/wallet_bg.jpg";
 import { getImageProps } from "next/image";
 
 function getBackgroundImage(srcSet = "") {
@@ -14,7 +15,9 @@ function getBackgroundImage(srcSet = "") {
   return `image-set(${imageSet})`;
 }
 
-export function getBackgroundImageStyle(type: "nav" | "main" | "vip") {
+export function getBackgroundImageStyle(
+  type: "nav" | "main" | "vip" | "wallet",
+) {
   let params = null;
   switch (type) {
     case "nav":
@@ -44,6 +47,14 @@ export function getBackgroundImageStyle(type: "nav" | "main" | "vip") {
       });
       break;
 
+    case "wallet":
+      params = getImageProps({
+        alt: "",
+        width: 914,
+        height: 381,
+        src: walletBg,
+      });
+      break;
     default:
       throw new Error("Invalid background image type");
   }
