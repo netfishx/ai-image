@@ -10,8 +10,8 @@ import {
   ShoppingCart,
   UserCog,
 } from "lucide-react";
-import { Link } from "next-view-transitions";
 import Image from "next/image";
+import Link from "next/link";
 import { Suspense } from "react";
 import { Coins } from "./coins";
 import { RefreshButton } from "./refresh";

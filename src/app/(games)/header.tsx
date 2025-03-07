@@ -2,7 +2,7 @@ import { getBackgroundImageStyle } from "@/app/bg";
 import { Button } from "@/components/ui/button";
 import { UserName } from "@/components/user-name";
 import { House, MenuSquare } from "lucide-react";
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 import { Suspense } from "react";
 export function Header() {
   return (

@@ -1,7 +1,7 @@
 "use client";
 
 import { Tabs, TabsList } from "@/components/ui/tabs";
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export function CustomTabs() {

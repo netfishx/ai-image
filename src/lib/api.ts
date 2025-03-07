@@ -6,17 +6,20 @@ import { redirect } from "next/navigation";
 import { apiRequest } from "./request";
 import { getSession, setSession } from "./session";
 
-export async function checkUser() {
+export async function checkUser(inviteCode: string | null) {
   const session = await getSession();
   if (!session) {
-    await guestLogin();
+    await guestLogin(inviteCode);
   }
 }
 
-export async function guestLogin() {
+export async function guestLogin(inviteCode: string | null) {
   const res = await apiRequest<User>({
     url: "/api/account/v1/tourist",
     method: "POST",
+    data: {
+      inviteCode,
+    },
   });
   if (res.code === 0 && res.data) {
     await setSession(res.data);
