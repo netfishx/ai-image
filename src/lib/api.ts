@@ -13,12 +13,12 @@ export async function checkUser(inviteCode: string | null) {
   }
 }
 
-export async function guestLogin(inviteCode: string | null) {
+export async function guestLogin(userName: string | null) {
   const res = await apiRequest<User>({
     url: "/api/account/v1/tourist",
     method: "POST",
     data: {
-      inviteCode,
+      userName,
     },
   });
   if (res.code === 0 && res.data) {
