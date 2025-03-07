@@ -13,6 +13,7 @@ import {
 import { Link } from "next-view-transitions";
 import Image from "next/image";
 import { Suspense } from "react";
+import { Coins } from "./coins";
 import { RefreshButton } from "./refresh";
 
 export default function Personal() {
@@ -70,7 +71,11 @@ export default function Personal() {
           </div>
         </div>
         <div className="flex items-center gap-1 text-sm">
-          <span className="text-amber-500 text-xl">10.00</span>
+          <span className="text-amber-500 text-xl">
+            <Suspense>
+              <Coins />
+            </Suspense>
+          </span>
           金币
           <RefreshButton />
           <span className="text-xs opacity-60">充值如有延迟，请多刷新几次</span>

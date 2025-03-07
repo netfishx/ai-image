@@ -1,6 +1,6 @@
 "use server";
 
-import type { Record, User } from "@/lib/types";
+import type { Record, User, UserInfo } from "@/lib/types";
 import axios from "axios";
 import { redirect } from "next/navigation";
 import { apiRequest } from "./request";
@@ -147,5 +147,14 @@ export async function deleteOrder(businessId: string) {
     method: "POST",
     token,
     data: { businessId },
+  });
+}
+
+export async function getUserInfo() {
+  const session = await getSession();
+  const token = session?.token;
+  return await apiRequest<UserInfo>({
+    url: "/api/account/v1/User",
+    token,
   });
 }

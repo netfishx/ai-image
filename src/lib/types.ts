@@ -22,3 +22,8 @@ export type Record = {
   processingResult: string;
   originalMaterial: string;
 };
+
+export type UserInfo = {
+  userName: string;
+  coins: number;
+};

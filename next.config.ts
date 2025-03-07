@@ -42,6 +42,7 @@ const nextConfig: NextConfig = {
       bodySizeLimit: "1024mb",
     },
     useCache: true,
+    viewTransition: true,
   },
   output: "standalone",
   images: {
