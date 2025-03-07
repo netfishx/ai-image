@@ -37,7 +37,7 @@ async function List() {
                 alt="head"
                 width={40}
                 height={40}
-                className="rounded-full"
+                className="size-10 rounded-full"
               />
               <div className="flex flex-col">
                 <span>{item.orderName}</span>

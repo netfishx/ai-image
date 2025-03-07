@@ -7,8 +7,8 @@ import { ChevronDown, ChevronUp, Loader2 } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
-import ReactPlayer from "react-player";
 import { toast } from "sonner";
+
 export function Actions({
   url,
   businessId,
@@ -82,9 +82,19 @@ export function Actions({
               isOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0",
             )}
           >
-            <div className="flex items-center justify-center">
+            <div
+              className="flex items-center justify-center"
+              suppressHydrationWarning={true}
+            >
               {isVideo ? (
-                <ReactPlayer url={url} controls muted playing />
+                <video
+                  autoPlay
+                  muted
+                  controls
+                  src={url}
+                  width={320}
+                  height={180}
+                />
               ) : (
                 <Image
                   src={url}
