@@ -25,7 +25,7 @@ export default async function RootLayout({
             richColors
             expand
             visibleToasts={2}
-            toastOptions={{ duration: 2000 }}
+            toastOptions={{ duration: 4000 }}
           />
           <Suspense>
             <CheckUser />

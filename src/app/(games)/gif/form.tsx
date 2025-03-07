@@ -45,7 +45,7 @@ export function GifForm() {
         toast.error(res.msg ?? "上传失败");
         return;
       }
-      toast.success("开始制作");
+      toast.success(res.msg ?? "开始制作");
     });
   }
   return (
