@@ -1,4 +1,5 @@
 import { getResource } from "@/lib/api";
+import { rgbDataURL } from "@/lib/utils";
 import Image from "next/image";
 import { Suspense } from "react";
 import { ActionButton } from "./action";
@@ -23,6 +24,8 @@ async function List() {
               src={item.materialUrl}
               alt={item.businessId}
               fill
+              placeholder="blur"
+              blurDataURL={rgbDataURL(200, 200, 200)}
               className="rounded-t-2xl object-cover"
             />
           </div>
