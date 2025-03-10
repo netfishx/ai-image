@@ -10,7 +10,7 @@ import { Loader2, Minus } from "lucide-react";
 import Form from "next/form";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { type FormEvent, useRef, useTransition } from "react";
+import { type FormEvent, useEffect, useRef, useTransition } from "react";
 import { toast } from "sonner";
 export function UploadForm({ coins }: { coins: number }) {
   const resource = useAtomValue(resourceAtom);
@@ -42,6 +42,12 @@ export function UploadForm({ coins }: { coins: number }) {
       router.replace("/records");
     });
   }
+
+  useEffect(() => {
+    if (!resource) {
+      router.replace("/personal");
+    }
+  }, [resource, router.replace]);
   return (
     <Form action="" ref={ref} onSubmit={handleSubmit}>
       <div className="p-4">
