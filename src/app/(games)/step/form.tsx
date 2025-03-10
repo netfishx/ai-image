@@ -3,24 +3,56 @@
 import { Upload } from "@/app/(games)/step/upload";
 import mb from "@/assets/mb.png";
 import { Button } from "@/components/ui/button";
+import { takeOff, upload } from "@/lib/api";
 import { resourceAtom } from "@/lib/store";
 import { useAtomValue } from "jotai";
-import { Minus } from "lucide-react";
+import { Loader2, Minus } from "lucide-react";
 import Form from "next/form";
 import Image from "next/image";
-
+import { useRouter } from "next/navigation";
+import { type FormEvent, useRef, useTransition } from "react";
+import { toast } from "sonner";
 export function UploadForm({ coins }: { coins: number }) {
   const resource = useAtomValue(resourceAtom);
+  const ref = useRef<HTMLFormElement>(null);
+  const [isPending, startTransition] = useTransition();
+  const router = useRouter();
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    startTransition(async () => {
+      if (!ref.current) {
+        return;
+      }
+      const formData = new FormData(ref.current);
+      const aFormData = new FormData();
+      aFormData.append("file", formData.get("face") as File);
+      const aRes = await upload(aFormData);
+      console.info(aRes);
+      if (aRes.code !== 0) {
+        toast.error(aRes.msg ?? "上传失败");
+        return;
+      }
+      const res = await takeOff(aRes.data ?? "");
+      console.info(res);
+      if (res.code !== 0) {
+        toast.error(res.msg ?? "上传失败");
+        return;
+      }
+      toast.success(res.msg ?? "开始制作");
+      router.replace("/records");
+    });
+  }
   return (
-    <Form action="">
+    <Form action="" ref={ref} onSubmit={handleSubmit}>
       <div className="p-4">
-        <Image
-          src={resource?.materialUrl ?? ""}
-          alt="gif"
-          width={2000}
-          height={1000}
-          className="rounded-lg"
-        />
+        <div className="relative h-50 w-full">
+          <Image
+            src={resource?.materialUrl ?? ""}
+            alt="gif"
+            fill
+            className="rounded-lg object-cover"
+          />
+        </div>
       </div>
       <div className="flex items-center justify-between px-1 text-lg">
         <div className="flex items-center gap-2">
@@ -56,7 +88,13 @@ export function UploadForm({ coins }: { coins: number }) {
             <span>账户余额</span>
           </div>
           <div>
-            <Button className="rounded-full bg-amber-400 text-sm" size="sm">
+            <Button
+              type="submit"
+              className="rounded-full bg-amber-400 text-sm"
+              size="sm"
+              disabled={isPending}
+            >
+              {isPending && <Loader2 className="animate-spin" />}
               开始制作
             </Button>
           </div>

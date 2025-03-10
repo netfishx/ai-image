@@ -18,14 +18,15 @@ async function List() {
     <ul className="grid grid-cols-2 gap-2 p-2">
       {resource?.data?.map((item) => (
         <li key={item.businessId} className="flex flex-col">
-          <Image
-            src={item.materialUrl}
-            alt={item.businessId}
-            width={200}
-            height={200}
-            className="h-50 w-full rounded-t-2xl object-cover"
-          />
-          <div className="flex items-center justify-between rounded-b-2xl bg-neutral-800/80 px-2 py-1">
+          <div className="relative h-50 w-full">
+            <Image
+              src={item.materialUrl}
+              alt={item.businessId}
+              fill
+              className="rounded-t-2xl object-cover"
+            />
+          </div>
+          <div className="flex items-center justify-between rounded-b-2xl bg-neutral-700/80 px-2 py-1">
             <span className="text-wrap break-all text-xs">GIF</span>
             <ActionButton resource={item} />
           </div>

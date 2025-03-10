@@ -1,5 +1,6 @@
 import { getSession } from "@/lib/session";
 import { Minus } from "lucide-react";
+import { Suspense } from "react";
 import { UploadForm } from "./form";
 import { GoBack } from "./goback";
 
@@ -34,7 +35,9 @@ export default async function Step({
         </div>
         <GoBack />
       </div>
-      <UploadForm coins={coins ?? 0} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <UploadForm coins={coins ?? 0} />
+      </Suspense>
       <ul className="px-4 text-xs">
         <li>1.禁止上传未成年人或政府官员照片，如发现封号处理</li>
         <li>2.图片只能出现一张人脸，多人照片无法换脸</li>
