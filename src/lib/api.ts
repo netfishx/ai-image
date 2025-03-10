@@ -1,6 +1,6 @@
 "use server";
 
-import type { Record, User, UserInfo } from "@/lib/types";
+import type { Record, Resource, User, UserInfo } from "@/lib/types";
 import axios from "axios";
 import { redirect } from "next/navigation";
 import { apiRequest } from "./request";
@@ -168,5 +168,17 @@ export async function checkDownload() {
   return await apiRequest<boolean>({
     url: "/api/account/v1/canDownloaded",
     token,
+  });
+}
+
+export async function getResource(materialType: number) {
+  const session = await getSession();
+  const token = session?.token;
+  return await apiRequest<Resource[]>({
+    url: "/api/processing/v1/materialList",
+    token,
+    params: {
+      materialType,
+    },
   });
 }

@@ -1,0 +1,36 @@
+import { getResource } from "@/lib/api";
+import Image from "next/image";
+import { Suspense } from "react";
+import { ActionButton } from "./action";
+
+export default function GifPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <List />
+    </Suspense>
+  );
+}
+
+async function List() {
+  const resource = await getResource(2);
+
+  return (
+    <ul className="grid grid-cols-2 gap-2 p-2">
+      {resource?.data?.map((item) => (
+        <li key={item.businessId} className="flex flex-col">
+          <Image
+            src={item.materialUrl}
+            alt={item.businessId}
+            width={200}
+            height={200}
+            className="h-50 w-full rounded-t-2xl object-cover"
+          />
+          <div className="flex items-center justify-between rounded-b-2xl bg-neutral-800/80 px-2 py-1">
+            <span className="text-wrap break-all text-xs">GIF</span>
+            <ActionButton resource={item} />
+          </div>
+        </li>
+      ))}
+    </ul>
+  );
+}

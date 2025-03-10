@@ -9,6 +9,7 @@ export type Res<T> = {
 export const UserSchema = z.object({
   userName: z.string(),
   token: z.string(),
+  coins: z.number(),
 });
 
 export type User = z.infer<typeof UserSchema>;
@@ -26,4 +27,11 @@ export type Record = {
 export type UserInfo = {
   userName: string;
   coins: number;
+};
+
+export type Resource = {
+  businessId: string;
+  materialUrl: string;
+  materialCoins: number;
+  materialType: number;
 };
