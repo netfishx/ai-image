@@ -161,3 +161,12 @@ export async function getUserInfo() {
     token,
   });
 }
+
+export async function checkDownload() {
+  const session = await getSession();
+  const token = session?.token;
+  return await apiRequest<boolean>({
+    url: "/api/account/v1/canDownloaded",
+    token,
+  });
+}

@@ -1,11 +1,14 @@
+import { Actions } from "@/app/(common)/records/actions";
+import { DownloadAlert, ShareDialog } from "@/app/(common)/records/download";
 import { getBackgroundImageStyle } from "@/app/bg";
 import { Time } from "@/components/time";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { getRecords } from "@/lib/api";
+import { getSession } from "@/lib/session";
 import Image from "next/image";
 import { Suspense } from "react";
-import { Actions } from "./actions";
+
 export default function RecordsPage() {
   return (
     <ScrollArea className="h-[calc(100vh-48px)]">
@@ -15,14 +18,27 @@ export default function RecordsPage() {
       >
         <Suspense>
           <List />
+          <Dialog />
         </Suspense>
       </div>
     </ScrollArea>
   );
 }
 
+async function Dialog() {
+  const session = await getSession();
+  const username = session?.userName;
+  return (
+    <>
+      <ShareDialog username={username ?? ""} />
+      <DownloadAlert />
+    </>
+  );
+}
+
 async function List() {
   const list = await getRecords();
+
   return (
     <>
       {list?.map((item) => (

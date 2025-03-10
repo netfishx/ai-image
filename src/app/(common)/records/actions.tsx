@@ -1,8 +1,10 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { deleteOrder } from "@/lib/api";
+import { checkDownload, deleteOrder } from "@/lib/api";
+import { downloadAlertAtom } from "@/lib/store";
 import { cn } from "@/lib/utils";
+import { useSetAtom } from "jotai";
 import { ChevronDown, ChevronUp, Loader2 } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -20,6 +22,8 @@ export function Actions({
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
+  const [isDownloading, startDownloadTransition] = useTransition();
+  const setDownloadAlert = useSetAtom(downloadAlertAtom);
   const router = useRouter();
   async function handleDeleteOrder() {
     startTransition(async () => {
@@ -32,15 +36,34 @@ export function Actions({
       }
     });
   }
+  async function handleDownloadOrder(url: string) {
+    startDownloadTransition(async () => {
+      const res = await checkDownload();
+      if (res.code !== 0) {
+        toast.error(res.msg);
+      } else if (res.data) {
+        window.open(url, "_blank");
+      } else {
+        setDownloadAlert(true);
+      }
+    });
+  }
   return (
     <>
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="sm" className="px-0" asChild>
             {url ? (
-              <a href={url} target="_blank" rel="noreferrer">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="px-0"
+                onClick={() => handleDownloadOrder(url)}
+                disabled={isDownloading}
+              >
+                {isDownloading && <Loader2 className="animate-spin" />}
                 下载作品
-              </a>
+              </Button>
             ) : (
               <span>下载作品</span>
             )}
