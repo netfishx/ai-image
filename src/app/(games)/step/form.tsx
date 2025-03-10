@@ -5,6 +5,7 @@ import mb from "@/assets/mb.png";
 import { Button } from "@/components/ui/button";
 import { takeOff, upload } from "@/lib/api";
 import { resourceAtom } from "@/lib/store";
+import { rgbDataURL } from "@/lib/utils";
 import { useAtomValue } from "jotai";
 import { Loader2, Minus } from "lucide-react";
 import Form from "next/form";
@@ -56,7 +57,10 @@ export function UploadForm({ coins }: { coins: number }) {
             src={resource?.materialUrl ?? ""}
             alt="gif"
             fill
+            placeholder="blur"
+            blurDataURL={rgbDataURL(200, 200, 200)}
             className="rounded-lg object-cover"
+            sizes="100vw"
           />
         </div>
       </div>

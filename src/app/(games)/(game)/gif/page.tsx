@@ -27,6 +27,7 @@ async function List() {
               placeholder="blur"
               blurDataURL={rgbDataURL(200, 200, 200)}
               className="rounded-t-2xl object-cover"
+              sizes="50vw"
             />
           </div>
           <div className="flex items-center justify-between rounded-b-2xl bg-neutral-700/80 px-2 py-1">
