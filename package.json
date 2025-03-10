@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@devnomic/marquee": "^1.0.3",
-    "@jsonjoy.com/json-pack": "^1.1.1",
+    "@jsonjoy.com/json-pack": "^1.2.0",
     "@radix-ui/react-checkbox": "^1.1.4",
     "@radix-ui/react-label": "^2.1.2",
     "@radix-ui/react-scroll-area": "^1.2.3",
@@ -23,10 +23,10 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
-    "lucide-react": "^0.477.0",
+    "lucide-react": "^0.479.0",
     "lz-string": "^1.5.0",
-    "next": "15.2.2-canary.3",
-    "next-themes": "^0.4.4",
+    "next": "15.2.2-canary.6",
+    "next-themes": "^0.4.5",
     "next-video": "^2.1.0",
     "pino-http": "^10.4.0",
     "react": "^19.0.0",
@@ -47,7 +47,7 @@
     "typescript": "^5"
   },
   "overrides": {
-    "next": "15.2.2-canary.3",
+    "next": "15.2.2-canary.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-is": "^19.0.0",
@@ -59,6 +59,6 @@
     "sharp"
   ],
   "patchedDependencies": {
-    "next@15.2.2-canary.3": "patches/next@15.2.2-canary.3.patch"
+    "next@15.2.2-canary.6": "patches/next@15.2.2-canary.6.patch"
   }
 }
