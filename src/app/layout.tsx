@@ -4,6 +4,7 @@ import { CheckUser } from "@/app/check-user";
 import { Toaster } from "@/components/ui/sonner";
 import { Provider as JotaiProvider } from "jotai";
 import { type ReactNode, Suspense } from "react";
+import { PWAInstallDetector } from "./pwa";
 
 export const metadata: Metadata = {
   title: "AI Web",
@@ -31,6 +32,7 @@ export default async function RootLayout({
             <CheckUser />
           </Suspense>
         </JotaiProvider>
+        <PWAInstallDetector />
       </body>
     </html>
   );

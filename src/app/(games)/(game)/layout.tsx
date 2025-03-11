@@ -22,7 +22,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         />
       </div>
       <CustomMarquee />
-      <ScrollArea className="h-[calc(100dvh-100px)]">{children}</ScrollArea>
+      <ScrollArea className="h-[calc(100dvh-200px)]">{children}</ScrollArea>
     </>
   );
 }
