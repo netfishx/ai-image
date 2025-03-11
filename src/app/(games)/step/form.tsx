@@ -3,7 +3,7 @@
 import { Upload } from "@/app/(games)/step/upload";
 import mb from "@/assets/mb.png";
 import { Button } from "@/components/ui/button";
-import { takeOff, upload } from "@/lib/api";
+import { gifConversion, upload } from "@/lib/api";
 import { resourceAtom } from "@/lib/store";
 import { rgbDataURL } from "@/lib/utils";
 import { useAtomValue } from "jotai";
@@ -33,7 +33,10 @@ export function UploadForm({ coins }: { coins: number }) {
         toast.error(aRes.msg ?? "上传失败");
         return;
       }
-      const res = await takeOff(aRes.data ?? "");
+      const res = await gifConversion({
+        imageKey: aRes.data ?? "",
+        materialBid: resource?.businessId ?? "",
+      });
       console.info(res);
       if (res.code !== 0) {
         toast.error(res.msg ?? "上传失败");

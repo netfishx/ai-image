@@ -1,4 +1,4 @@
-import { getSession } from "@/lib/session";
+import { getUserInfo } from "@/lib/api";
 import { Minus } from "lucide-react";
 import { Suspense } from "react";
 import { UploadForm } from "./form";
@@ -24,8 +24,8 @@ export default async function Step({
     default:
       title = "未知";
   }
-  const session = await getSession();
-  const coins = session?.coins;
+  const res = await getUserInfo();
+  const coins = res.data?.coins ?? 0;
   return (
     <div className="relative flex flex-col gap-2">
       <div className="flex items-center justify-between text-lg">
@@ -36,7 +36,7 @@ export default async function Step({
         <GoBack />
       </div>
       <Suspense fallback={<div>Loading...</div>}>
-        <UploadForm coins={coins ?? 0} />
+        <UploadForm coins={coins} />
       </Suspense>
       <ul className="px-4 text-xs">
         <li>1.禁止上传未成年人或政府官员照片，如发现封号处理</li>

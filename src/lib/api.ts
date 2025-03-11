@@ -109,14 +109,22 @@ export async function imageConversion(imageKeyA: string, imageKeyB: string) {
   });
 }
 
-export async function gifConversion(gifKey: string, imageKey: string) {
+export async function gifConversion({
+  gifKey,
+  imageKey,
+  materialBid,
+}: {
+  gifKey?: string;
+  imageKey: string;
+  materialBid?: string;
+}) {
   const session = await getSession();
   const token = session?.token;
   return await apiRequest({
     url: "/api/processing/v1/gifConversion",
     method: "POST",
     token,
-    data: { gifKey, imageKey },
+    data: { gifKey, imageKey, materialBid },
   });
 }
 

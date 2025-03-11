@@ -39,7 +39,10 @@ export function GifForm() {
         toast.error(bRes.msg ?? "上传失败");
         return;
       }
-      const res = await gifConversion(aRes.data ?? "", bRes.data ?? "");
+      const res = await gifConversion({
+        gifKey: aRes.data ?? "",
+        imageKey: bRes.data ?? "",
+      });
       console.info(res);
       if (res.code !== 0) {
         toast.error(res.msg ?? "上传失败");

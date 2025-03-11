@@ -1,6 +1,9 @@
+import { Button } from "@/components/ui/button";
 import { getResource } from "@/lib/api";
 import { rgbDataURL } from "@/lib/utils";
+import { CloudUpload } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { Suspense } from "react";
 import { ActionButton } from "./action";
 
@@ -8,6 +11,15 @@ export default function GifPage() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <List />
+      <Button
+        className="fixed right-4 bottom-4 rounded-full bg-green-500"
+        asChild
+      >
+        <Link href="/gif/custom">
+          <CloudUpload />
+          上传自定义素材
+        </Link>
+      </Button>
     </Suspense>
   );
 }
