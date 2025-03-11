@@ -1,4 +1,4 @@
-import { ImageForm } from "@/app/(games)/(game)/image/form";
+import { ImageForm } from "@/app/(games)/(game)/image/custom/form";
 import sample from "@/assets/sample2.jpg";
 import { Minus } from "lucide-react";
 import Image from "next/image";
