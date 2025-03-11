@@ -67,7 +67,7 @@ export function VideoForm() {
         请上传原视频
       </div>
       <div>
-        <Upload type="video" name="video" maxSize={200} />
+        <Upload type="video" name="video" maxSize={20} />
       </div>
       <div className="flex justify-center px-8">
         <Button type="submit" className="w-full" disabled={isPending}>

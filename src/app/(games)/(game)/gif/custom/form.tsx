@@ -79,7 +79,7 @@ export function GifForm() {
         请上传原GIF
       </div>
       <div>
-        <Upload type="image" name="gif" />
+        <Upload type="image" name="gif" maxSize={10} />
       </div>
       <div className="flex justify-center px-8">
         <Button type="submit" className="w-full" disabled={isPending}>
