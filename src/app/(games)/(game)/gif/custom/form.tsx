@@ -5,12 +5,14 @@ import Upload from "@/components/upload";
 import { gifConversion, upload } from "@/lib/api";
 import { Loader2, Minus } from "lucide-react";
 import Form from "next/form";
+import { useRouter } from "next/navigation";
 import { type FormEvent, useRef, useTransition } from "react";
 import { toast } from "sonner";
 
 export function GifForm() {
   const ref = useRef<HTMLFormElement>(null);
   const [isPending, startTransition] = useTransition();
+  const router = useRouter();
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
@@ -49,6 +51,7 @@ export function GifForm() {
         return;
       }
       toast.success(res.msg ?? "开始制作");
+      router.replace("/records");
     });
   }
   return (
