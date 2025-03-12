@@ -32,8 +32,7 @@ export function RechargeForm() {
     e.preventDefault();
     startTransition(async () => {
       const formData = new FormData(e.currentTarget);
-      const packageId = formData.get("packageId") as string;
-      console.log(packageId);
+      const _packageId = formData.get("packageId") as string;
     });
   }
 
