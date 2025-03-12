@@ -3,36 +3,44 @@
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { recharge } from "@/lib/api";
 import { cn } from "@/lib/utils";
 import { Loader2 } from "lucide-react";
 import Form from "next/form";
+import { useRouter } from "next/navigation";
 import { type FormEvent, useState, useTransition } from "react";
-
+import { toast } from "sonner";
 interface CoinPackage {
-  id: string;
   coins: number;
   price: number;
 }
 
 export function RechargeForm() {
-  const [selectedPackage, setSelectedPackage] = useState("35");
+  const [selectedPackage, setSelectedPackage] = useState("30");
 
   const coinPackages: CoinPackage[] = [
-    { id: "35", coins: 35, price: 30 },
-    { id: "69", coins: 69, price: 50 },
-    { id: "149", coins: 149, price: 100 },
-    { id: "319", coins: 319, price: 200 },
-    { id: "499", coins: 499, price: 300 },
-    { id: "799", coins: 799, price: 500 },
+    { coins: 35, price: 30 },
+    { coins: 69, price: 50 },
+    { coins: 149, price: 100 },
+    { coins: 319, price: 200 },
+    { coins: 499, price: 300 },
+    { coins: 799, price: 500 },
   ];
 
   const [isLoading, startTransition] = useTransition();
-
+  const router = useRouter();
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     startTransition(async () => {
       const formData = new FormData(e.currentTarget);
-      const _packageId = formData.get("packageId") as string;
+      const amount = formData.get("amount") as string;
+      const res = await recharge(Number(amount));
+      if (res.code !== 0) {
+        toast.error(res?.msg ?? "充值失败");
+      } else {
+        toast.success(res?.msg ?? "充值成功");
+        router.push("/personal");
+      }
     });
   }
 
@@ -44,21 +52,21 @@ export function RechargeForm() {
           value={selectedPackage}
           onValueChange={setSelectedPackage}
           className="grid grid-cols-3 gap-2"
-          name="packageId"
+          name="amount"
         >
           {coinPackages.map((pkg) => (
-            <div key={pkg.id} className="relative">
+            <div key={pkg.price} className="relative">
               <RadioGroupItem
-                value={pkg.id}
-                id={`coin-${pkg.id}`}
+                value={pkg.price.toString()}
+                id={`coin-${pkg.price}`}
                 className="sr-only"
               />
               <Label
-                htmlFor={`coin-${pkg.id}`}
+                htmlFor={`coin-${pkg.price}`}
                 className={cn(
                   "flex h-28 cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-transparent",
                   "transition-all duration-200",
-                  selectedPackage === pkg.id
+                  selectedPackage === pkg.price.toString()
                     ? "bg-blue-500 text-white"
                     : "bg-orange-200 text-slate-900 hover:border-amber-400",
                 )}

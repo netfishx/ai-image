@@ -190,3 +190,16 @@ export async function getResource(materialType: number) {
     },
   });
 }
+
+export async function recharge(amount: number) {
+  const session = await getSession();
+  const token = session?.token;
+  return await apiRequest({
+    url: "/api/account/v1/recharge",
+    method: "POST",
+    token,
+    data: {
+      amount,
+    },
+  });
+}
