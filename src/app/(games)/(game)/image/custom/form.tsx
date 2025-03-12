@@ -22,13 +22,21 @@ export function ImageForm() {
         return;
       }
       const formData = new FormData(ref.current);
-      formData.forEach((value, key) => {
-        console.info(key, value);
-      });
+
       const aFormData = new FormData();
-      aFormData.append("file", formData.get("a") as File);
+      const face = formData.get("face") as File;
+      if (!face || face.size === 0) {
+        toast.error("请上传脸部照片");
+        return;
+      }
+      aFormData.append("file", face);
       const bFormData = new FormData();
-      bFormData.append("file", formData.get("b") as File);
+      const image = formData.get("image") as File;
+      if (!image || image.size === 0) {
+        toast.error("请上传原图");
+        return;
+      }
+      bFormData.append("file", image);
       const [aRes, bRes] = await Promise.all([
         upload(aFormData),
         upload(bFormData),
@@ -69,14 +77,14 @@ export function ImageForm() {
         </Button>
       </div>
       <div>
-        <Upload type="image" name="a" />
+        <Upload type="image" name="face" />
       </div>
       <div className="flex items-center gap-2">
         <Minus className="rotate-90" />
         请上传原图
       </div>
       <div>
-        <Upload type="image" name="b" />
+        <Upload type="image" name="image" />
       </div>
       <div className="flex justify-center px-8">
         <Button type="submit" className="w-full" disabled={isPending}>

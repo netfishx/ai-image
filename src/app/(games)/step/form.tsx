@@ -25,10 +25,15 @@ export function UploadForm({ coins }: { coins: number }) {
         return;
       }
       const formData = new FormData(ref.current);
+      const file = formData.get("face") as File;
+      if (!file || file.size === 0) {
+        toast.error("请上传脸部信息");
+        return;
+      }
       const aFormData = new FormData();
-      aFormData.append("file", formData.get("face") as File);
+      aFormData.append("file", file);
       const aRes = await upload(aFormData);
-      console.info(aRes);
+
       if (aRes.code !== 0) {
         toast.error(aRes.msg ?? "上传失败");
         return;

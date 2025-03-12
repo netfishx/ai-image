@@ -26,9 +26,19 @@ export function GifForm() {
         console.info(key, value);
       });
       const aFormData = new FormData();
-      aFormData.append("file", formData.get("gif") as File);
+      const gif = formData.get("gif") as File;
+      if (!gif || gif.size === 0) {
+        toast.error("请上传原GIF");
+        return;
+      }
+      aFormData.append("file", gif);
       const bFormData = new FormData();
-      bFormData.append("file", formData.get("image") as File);
+      const image = formData.get("image") as File;
+      if (!image || image.size === 0) {
+        toast.error("请上传脸部照片");
+        return;
+      }
+      bFormData.append("file", image);
       const [aRes, bRes] = await Promise.all([
         upload(aFormData),
         upload(bFormData),

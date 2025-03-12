@@ -19,13 +19,21 @@ export function VideoForm() {
         return;
       }
       const formData = new FormData(ref.current);
-      formData.forEach((value, key) => {
-        console.info(key, value);
-      });
+
       const aFormData = new FormData();
-      aFormData.append("file", formData.get("image") as File);
+      const face = formData.get("face") as File;
+      if (!face || face.size === 0) {
+        toast.error("请上传脸部照片");
+        return;
+      }
+      aFormData.append("file", face);
       const bFormData = new FormData();
-      bFormData.append("file", formData.get("video") as File);
+      const video = formData.get("video") as File;
+      if (!video || video.size === 0) {
+        toast.error("请上传原视频");
+        return;
+      }
+      bFormData.append("file", video);
       const [aRes, bRes] = await Promise.all([
         upload(aFormData),
         upload(bFormData),
@@ -60,7 +68,7 @@ export function VideoForm() {
         请上传脸部照片
       </div>
       <div>
-        <Upload type="image" name="image" />
+        <Upload type="image" name="face" />
       </div>
       <div className="flex items-center gap-2">
         <Minus className="rotate-90" />
