@@ -40,6 +40,6 @@ export type RechargeRecord = {
   businessId: string;
   rechargeAmount: number;
   coinsReceived: number;
-  createdTime: string;
+  createdTime: number;
   rechargeStatus: number;
 };
