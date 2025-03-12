@@ -8,7 +8,7 @@ import { useTransition } from "react";
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-export function RefreshButton() {
+export function RefreshButton({ className }: { className?: string }) {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
   return (
@@ -18,13 +18,17 @@ export function RefreshButton() {
       disabled={isPending}
       onClick={async () => {
         startTransition(async () => {
-          await sleep(800);
+          await sleep(500);
           router.refresh();
         });
       }}
     >
       <RefreshCw
-        className={cn("size-4 text-background", isPending && "animate-spin")}
+        className={cn(
+          "size-4 text-background",
+          isPending && "animate-spin",
+          className,
+        )}
       />
     </Button>
   );

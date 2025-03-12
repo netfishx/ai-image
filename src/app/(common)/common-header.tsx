@@ -22,6 +22,9 @@ export function CommonHeader() {
     case "/records":
       title = "AI制作记录";
       break;
+    case "/recharge":
+      title = "充值";
+      break;
     default:
       title = "";
   }

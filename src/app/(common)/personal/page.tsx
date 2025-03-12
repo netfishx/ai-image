@@ -1,5 +1,7 @@
 import { getBackgroundImageStyle } from "@/app/bg";
 import head from "@/assets/head.png";
+import { Coins } from "@/components/coins";
+import { RefreshButton } from "@/components/refresh";
 import { Button } from "@/components/ui/button";
 import { UserName } from "@/components/user-name";
 import {
@@ -13,8 +15,6 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
-import { Coins } from "./coins";
-import { RefreshButton } from "./refresh";
 
 export default function Personal() {
   return (
@@ -62,8 +62,8 @@ export default function Personal() {
         <div className="flex items-center justify-between">
           <div>我的钱包</div>
           <div className="flex gap-2">
-            <Button size="sm" className="rounded-full bg-yellow-500">
-              立即充值
+            <Button size="sm" className="rounded-full bg-yellow-500" asChild>
+              <Link href="/recharge">立即充值</Link>
             </Button>
             <Button size="sm" className="rounded-full bg-blue-400">
               交易记录
