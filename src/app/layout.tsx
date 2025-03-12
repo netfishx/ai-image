@@ -18,25 +18,25 @@ export default async function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className="flex h-screen flex-col overflow-hidden">
-        <JotaiProvider>
-          <ViewTransition>
+    <ViewTransition>
+      <html lang="en" className="dark">
+        <body className="flex h-screen flex-col overflow-hidden">
+          <JotaiProvider>
             <Suspense>{children}</Suspense>
-          </ViewTransition>
-          <Toaster
-            position="top-center"
-            richColors
-            expand
-            visibleToasts={2}
-            toastOptions={{ duration: 4000 }}
-          />
-          <Suspense>
-            <CheckUser />
-          </Suspense>
-        </JotaiProvider>
-        <PWAInstallDetector />
-      </body>
-    </html>
+            <Toaster
+              position="top-center"
+              richColors
+              expand
+              visibleToasts={2}
+              toastOptions={{ duration: 4000 }}
+            />
+            <Suspense>
+              <CheckUser />
+            </Suspense>
+          </JotaiProvider>
+          <PWAInstallDetector />
+        </body>
+      </html>
+    </ViewTransition>
   );
 }
