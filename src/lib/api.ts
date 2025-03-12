@@ -1,6 +1,12 @@
 "use server";
 
-import type { Record, Resource, User, UserInfo } from "@/lib/types";
+import type {
+  RechargeRecord,
+  Record,
+  Resource,
+  User,
+  UserInfo,
+} from "@/lib/types";
 import axios from "axios";
 import { redirect } from "next/navigation";
 import { apiRequest } from "./request";
@@ -201,5 +207,14 @@ export async function recharge(amount: number) {
     data: {
       amount,
     },
+  });
+}
+
+export async function getRechargeRecords() {
+  const session = await getSession();
+  const token = session?.token;
+  return await apiRequest<RechargeRecord[]>({
+    url: "/api/order/v1/queryRecharge",
+    token,
   });
 }

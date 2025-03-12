@@ -3,7 +3,7 @@ import head from "@/assets/head.png";
 import { Coins } from "@/components/coins";
 import { RefreshButton } from "@/components/refresh";
 import { Button } from "@/components/ui/button";
-import { UserName } from "@/components/user-name";
+import { getSession } from "@/lib/session";
 import {
   Contact,
   IdCard,
@@ -65,8 +65,8 @@ export default function Personal() {
             <Button size="sm" className="rounded-full bg-yellow-500" asChild>
               <Link href="/recharge">立即充值</Link>
             </Button>
-            <Button size="sm" className="rounded-full bg-blue-400">
-              交易记录
+            <Button size="sm" className="rounded-full bg-blue-400" asChild>
+              <Link href="/orders">交易记录</Link>
             </Button>
           </div>
         </div>
@@ -77,7 +77,7 @@ export default function Personal() {
             </Suspense>
           </span>
           金币
-          <RefreshButton />
+          <RefreshButton className="text-background" />
           <span className="text-xs opacity-60">充值如有延迟，请多刷新几次</span>
         </div>
         <div className="grid grid-cols-2 text-xs">
@@ -101,7 +101,7 @@ export default function Personal() {
           <ReceiptText />
           制作记录
         </Link>
-        <Link href="#">
+        <Link href="/orders">
           <ShoppingCart />
           我的购买
         </Link>
@@ -139,6 +139,15 @@ export default function Personal() {
           </Button>
         </div>
       </div>
+    </div>
+  );
+}
+async function UserName() {
+  const session = await getSession();
+
+  return (
+    <div className="flex items-center gap-1 text-xs">
+      <span>{session?.userName ?? ""}</span>
     </div>
   );
 }

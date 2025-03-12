@@ -35,3 +35,11 @@ export type Resource = {
   materialCoins: number;
   materialType: number;
 };
+
+export type RechargeRecord = {
+  businessId: string;
+  rechargeAmount: number;
+  coinsReceived: number;
+  createdTime: string;
+  rechargeStatus: number;
+};

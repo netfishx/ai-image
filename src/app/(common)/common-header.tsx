@@ -25,6 +25,9 @@ export function CommonHeader() {
     case "/recharge":
       title = "充值";
       break;
+    case "/orders":
+      title = "充值记录";
+      break;
     default:
       title = "";
   }

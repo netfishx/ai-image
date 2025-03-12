@@ -24,11 +24,7 @@ export function RefreshButton({ className }: { className?: string }) {
       }}
     >
       <RefreshCw
-        className={cn(
-          "size-4 text-background",
-          isPending && "animate-spin",
-          className,
-        )}
+        className={cn("size-4", isPending && "animate-spin", className)}
       />
     </Button>
   );
