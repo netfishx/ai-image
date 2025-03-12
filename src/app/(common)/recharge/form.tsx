@@ -37,7 +37,6 @@ export function RechargeForm() {
       if (res.code !== 0) {
         toast.error(res.msg ?? "充值失败");
       } else {
-        toast.success(res.msg ?? "充值成功");
         window.open(res.data, "_blank");
       }
     });
