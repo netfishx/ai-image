@@ -7,7 +7,6 @@ import { recharge } from "@/lib/api";
 import { cn } from "@/lib/utils";
 import { Loader2 } from "lucide-react";
 import Form from "next/form";
-import { useRouter } from "next/navigation";
 import { type FormEvent, useState, useTransition } from "react";
 import { toast } from "sonner";
 interface CoinPackage {
@@ -28,7 +27,7 @@ export function RechargeForm() {
   ];
 
   const [isLoading, startTransition] = useTransition();
-  const router = useRouter();
+
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     startTransition(async () => {
@@ -36,10 +35,10 @@ export function RechargeForm() {
       const amount = formData.get("amount") as string;
       const res = await recharge(Number(amount));
       if (res.code !== 0) {
-        toast.error(res?.msg ?? "充值失败");
+        toast.error(res.msg ?? "充值失败");
       } else {
-        toast.success(res?.msg ?? "充值成功");
-        router.push("/personal");
+        toast.success(res.msg ?? "充值成功");
+        window.open(res.data, "_blank");
       }
     });
   }
