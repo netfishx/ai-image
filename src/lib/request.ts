@@ -9,7 +9,7 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 const instance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_BASE_URL,
+  baseURL: process.env.BASE_URL,
   timeout: 5000,
   validateStatus(status) {
     return status >= 200 && status <= 500;

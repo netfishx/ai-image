@@ -82,7 +82,7 @@ export async function upload(data: FormData) {
   const session = await getSession();
   const token = session?.token;
   const res = await axios({
-    url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/processing/v1/upFile`,
+    url: `${process.env.BASE_URL}/api/processing/v1/upFile`,
     method: "POST",
     data,
     headers: {
