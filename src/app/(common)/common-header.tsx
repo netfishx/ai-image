@@ -2,7 +2,6 @@
 
 import { getBackgroundImageStyle } from "@/app/bg";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 
 export function CommonHeader() {
@@ -36,12 +35,21 @@ export function CommonHeader() {
       className="flex h-12 shrink-0 items-center bg-cover px-2"
       style={getBackgroundImageStyle("nav")}
     >
-      <Button onClick={() => router.back()} variant="ghost" size="icon">
-        <ArrowLeft className="size-7" />
+      <Button
+        onClick={() => {
+          if (window.history.length > 1) {
+            router.back();
+          } else {
+            router.push("/");
+          }
+        }}
+        variant="ghost"
+        size="icon"
+      >
+        <div className="-translate-x-1/2 absolute left-1/2 transform">
+          {title}
+        </div>
       </Button>
-      <div className="-translate-x-1/2 absolute left-1/2 transform">
-        {title}
-      </div>
     </div>
   );
 }
