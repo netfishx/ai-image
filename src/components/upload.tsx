@@ -120,6 +120,9 @@ export default function Upload({
             // biome-ignore lint/style/noNonNullAssertion: <explanation>
             src={previewUrl!}
             controls
+            autoPlay
+            playsInline
+            muted
             className="h-40 w-64 rounded-lg object-cover"
           >
             <track kind="captions" />

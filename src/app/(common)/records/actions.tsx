@@ -114,6 +114,7 @@ export function Actions({
                   autoPlay
                   muted
                   controls
+                  playsInline
                   src={url}
                   width={320}
                   height={180}
