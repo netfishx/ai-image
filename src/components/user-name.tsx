@@ -7,7 +7,7 @@ export async function UserName() {
   const session = await getSession();
 
   return (
-    <div className="flex items-center gap-1 text-xs">
+    <div className="flex items-center gap-1 text-sm">
       <span>{session?.userName ?? ""}</span>
       <CircleDollarSign className="size-4 text-amber-400" />
       <span>
