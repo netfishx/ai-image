@@ -1,3 +1,4 @@
+import { ShareLink } from "@/app/(common)/personal/share-link";
 import { getBackgroundImageStyle } from "@/app/bg";
 import head from "@/assets/head.png";
 import { Coins } from "@/components/coins";
@@ -14,7 +15,6 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
-import { ShareLink } from "./share-link";
 
 export default function Personal() {
   return (
