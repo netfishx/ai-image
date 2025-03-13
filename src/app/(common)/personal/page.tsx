@@ -8,13 +8,13 @@ import {
   Contact,
   IdCard,
   ReceiptText,
-  Share2,
   ShoppingCart,
   UserCog,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
+import { ShareLink } from "./share-link";
 
 export default function Personal() {
   return (
@@ -93,10 +93,7 @@ export default function Personal() {
         </div>
       </div>
       <div className="grid grid-cols-3 gap-2 *:flex *:aspect-square *:flex-col *:items-center *:justify-center *:gap-2 *:rounded-lg *:bg-slate-800 *:p-4">
-        <Link href="#">
-          <Share2 />
-          分享推广
-        </Link>
+        <ShareLink />
         <Link href="/records">
           <ReceiptText />
           制作记录
