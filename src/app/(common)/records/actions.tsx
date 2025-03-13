@@ -109,25 +109,27 @@ export function Actions({
               className="flex items-center justify-center"
               suppressHydrationWarning={true}
             >
-              {isVideo ? (
-                <video
-                  autoPlay
-                  muted
-                  controls
-                  playsInline
-                  src={url}
-                  width={320}
-                  height={180}
-                />
-              ) : (
-                <Image
-                  src={url}
-                  alt="review"
-                  width={300}
-                  height={300}
-                  className="transform transition-transform duration-500"
-                />
-              )}
+              <div className="relative h-45 w-80">
+                {isVideo ? (
+                  <video
+                    autoPlay
+                    muted
+                    playsInline
+                    src={url}
+                    width={320}
+                    height={180}
+                    className="object-contain"
+                  />
+                ) : (
+                  <Image
+                    src={url}
+                    alt="review"
+                    fill
+                    sizes="100vw"
+                    className="object-contain"
+                  />
+                )}
+              </div>
             </div>
           </div>
         </>
