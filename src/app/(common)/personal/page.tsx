@@ -142,9 +142,5 @@ export default function Personal() {
 async function UserName() {
   const session = await getSession();
 
-  return (
-    <div className="flex items-center gap-1 text-sm">
-      <span>{session?.userName ?? ""}</span>
-    </div>
-  );
+  return <span>{session?.userName ?? ""}</span>;
 }
