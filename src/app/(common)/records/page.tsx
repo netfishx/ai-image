@@ -2,7 +2,6 @@ import { Actions } from "@/app/(common)/records/actions";
 import { DownloadAlert } from "@/app/(common)/records/download";
 import { getBackgroundImageStyle } from "@/app/bg";
 import { Time } from "@/components/time";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { getRecords } from "@/lib/api";
 import Image from "next/image";
@@ -10,18 +9,16 @@ import { Suspense } from "react";
 
 export default function RecordsPage() {
   return (
-    <ScrollArea className="h-[calc(100vh-48px)]">
-      <div
-        className="flex flex-1 flex-col gap-4 bg-cover p-4"
-        style={getBackgroundImageStyle("main")}
-      >
-        <Suspense>
-          <List />
-        </Suspense>
+    <div
+      className="flex flex-1 flex-col gap-4 bg-cover p-4"
+      style={getBackgroundImageStyle("main")}
+    >
+      <Suspense>
+        <List />
+      </Suspense>
 
-        <DownloadAlert />
-      </div>
-    </ScrollArea>
+      <DownloadAlert />
+    </div>
   );
 }
 
@@ -33,9 +30,9 @@ async function List() {
       {list?.map((item) => (
         <div
           key={item.businessId}
-          className="flex flex-col gap-2 rounded-sm border bg-card-foreground py-2 text-card shadow-sm *:px-6"
+          className="flex flex-col gap-2 rounded-sm border bg-card-foreground py-2 text-card shadow-sm"
         >
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between px-6">
             <div className="flex items-center gap-2">
               <Image
                 src={item.originalMaterial}

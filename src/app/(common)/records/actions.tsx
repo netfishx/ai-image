@@ -50,7 +50,7 @@ export function Actions({
   }
   return (
     <>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between px-6">
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="sm" className="px-0" asChild>
             {url ? (
@@ -101,7 +101,7 @@ export function Actions({
           <Separator className={cn(isOpen ? "opacity-20" : "hidden")} />
           <div
             className={cn(
-              "overflow-hidden transition-all duration-500 ease-in-out",
+              "overflow-hidden px-2 transition-all duration-500 ease-in-out",
               isOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0",
             )}
           >
@@ -109,15 +109,15 @@ export function Actions({
               className="flex items-center justify-center"
               suppressHydrationWarning={true}
             >
-              <div className="relative h-45 w-80">
+              <div className="relative h-44 w-76">
                 {isVideo ? (
                   <video
                     autoPlay
                     muted
                     playsInline
                     src={url}
-                    width={320}
-                    height={180}
+                    width={304}
+                    height={196}
                     className="object-contain"
                   />
                 ) : (
