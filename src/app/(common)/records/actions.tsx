@@ -14,11 +14,11 @@ import { toast } from "sonner";
 export function Actions({
   url,
   businessId,
-  isVideo,
+  type,
 }: {
   url: string | null;
   businessId: string;
-  isVideo: boolean;
+  type: "video" | "image" | "gif";
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
@@ -110,7 +110,7 @@ export function Actions({
               suppressHydrationWarning={true}
             >
               <div className="relative h-44 w-76">
-                {isVideo ? (
+                {type === "video" ? (
                   <video
                     autoPlay
                     muted
@@ -127,6 +127,7 @@ export function Actions({
                     fill
                     sizes="100vw"
                     className="object-contain"
+                    unoptimized={type === "gif"}
                   />
                 )}
               </div>

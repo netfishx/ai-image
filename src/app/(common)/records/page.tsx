@@ -60,7 +60,13 @@ async function List() {
           <Actions
             url={item.processingResult}
             businessId={item.businessId}
-            isVideo={item.businessTypeId === 4}
+            type={
+              item.businessTypeId === 4
+                ? "video"
+                : item.businessTypeId === 3
+                  ? "gif"
+                  : "image"
+            }
           />
         </div>
       ))}
