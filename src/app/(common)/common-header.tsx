@@ -36,11 +36,7 @@ export function CommonHeader() {
       className="flex h-12 shrink-0 items-center bg-cover px-2"
       style={getBackgroundImageStyle("nav")}
     >
-      <Button
-        onClick={() => router.push("/personal")}
-        variant="ghost"
-        size="icon"
-      >
+      <Button onClick={() => router.back()} variant="ghost" size="icon">
         <ArrowLeft className="size-7" />
       </Button>
       <div className="-translate-x-1/2 absolute left-1/2 transform">
