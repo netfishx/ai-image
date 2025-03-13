@@ -60,10 +60,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19"
   },
-  "trustedDependencies": [
-    "@biomejs/biome",
-    "sharp"
-  ],
+  "trustedDependencies": ["@biomejs/biome", "sharp"],
   "patchedDependencies": {
     "next@15.3.0-canary.4": "patches/next@15.3.0-canary.4.patch"
   }

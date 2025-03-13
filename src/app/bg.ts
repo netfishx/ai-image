@@ -18,7 +18,11 @@ function getBackgroundImage(srcSet = "") {
 export function getBackgroundImageStyle(
   type: "nav" | "main" | "vip" | "wallet",
 ) {
-  let params = null;
+  let params: {
+    props: {
+      srcSet?: string;
+    };
+  } | null = null;
   switch (type) {
     case "nav":
       params = getImageProps({
