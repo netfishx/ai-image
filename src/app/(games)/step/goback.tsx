@@ -8,11 +8,7 @@ export function GoBack({ className }: { className?: string }) {
   return (
     <Button
       onClick={() => {
-        if (window.history.length > 1) {
-          router.back();
-        } else {
-          router.push("/");
-        }
+        router.push("/");
       }}
       size="icon"
       className={cn(className, "bg-transparent")}

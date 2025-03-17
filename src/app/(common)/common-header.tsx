@@ -2,6 +2,7 @@
 
 import { getBackgroundImageStyle } from "@/app/bg";
 import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 
 export function CommonHeader() {
@@ -37,19 +38,16 @@ export function CommonHeader() {
     >
       <Button
         onClick={() => {
-          if (window.history.length > 1) {
-            router.back();
-          } else {
-            router.push("/");
-          }
+          router.push("/");
         }}
         variant="ghost"
         size="icon"
       >
-        <div className="-translate-x-1/2 absolute left-1/2 transform">
-          {title}
-        </div>
+        <ArrowLeft className="size-7" />
       </Button>
+      <div className="-translate-x-1/2 absolute left-1/2 transform">
+        {title}
+      </div>
     </div>
   );
 }
