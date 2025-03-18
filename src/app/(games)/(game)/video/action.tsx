@@ -20,7 +20,7 @@ export function ActionButton({ resource }: { resource: Resource }) {
       onClick={() => {
         startTransition(() => {
           setCurrentResource(resource);
-          router.push("/step?type=1");
+          router.push("/step?type=3");
         });
       }}
       disabled={isPending}

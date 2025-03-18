@@ -87,8 +87,12 @@ export function UploadForm({ coins, type }: { coins: number; type: string }) {
       <div className="p-4">
         <div className="relative h-50 w-full">
           <Image
-            src={resource?.materialUrl ?? ""}
-            alt="gif"
+            src={
+              type === "3"
+                ? (resource?.materialPreviewUrl ?? "")
+                : (resource?.materialUrl ?? "")
+            }
+            alt="resource"
             fill
             placeholder="blur"
             blurDataURL={rgbDataURL(200, 200, 200)}
