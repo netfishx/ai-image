@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { getResource } from "@/lib/api";
 import { rgbDataURL } from "@/lib/utils";
-import { CloudUpload } from "lucide-react";
+import { CloudUpload, Gem } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -41,9 +41,15 @@ async function List() {
               className="rounded-t-2xl object-cover"
               sizes="50vw"
             />
+            <div className="absolute bottom-1 left-1 flex items-center gap-1 text-amber-400">
+              <Gem />
+              {item.materialCoins}
+            </div>
           </div>
           <div className="flex items-center justify-between rounded-b-2xl bg-neutral-700/80 px-2 py-1">
-            <span className="text-wrap break-all text-xs">图片</span>
+            <span className="text-wrap break-all text-xs">
+              {item.materialTitle}
+            </span>
             <ActionButton resource={item} />
           </div>
         </li>
