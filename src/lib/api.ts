@@ -101,7 +101,15 @@ export async function upload(data: FormData) {
   };
 }
 
-export async function imageConversion(imageKeyA: string, imageKeyB: string) {
+export async function imageConversion({
+  imageKeyA,
+  imageKeyB,
+  materialBid,
+}: {
+  imageKeyA: string;
+  imageKeyB?: string;
+  materialBid?: string;
+}) {
   const session = await getSession();
   const token = session?.token;
   return await apiRequest({
@@ -111,6 +119,7 @@ export async function imageConversion(imageKeyA: string, imageKeyB: string) {
     data: {
       imageKeyA,
       imageKeyB,
+      materialBid,
     },
   });
 }
@@ -134,14 +143,22 @@ export async function gifConversion({
   });
 }
 
-export async function videoConversion(imageKey: string, videoKey: string) {
+export async function videoConversion({
+  imageKey,
+  videoKey,
+  materialBid,
+}: {
+  imageKey: string;
+  videoKey?: string;
+  materialBid?: string;
+}) {
   const session = await getSession();
   const token = session?.token;
   return await apiRequest({
     url: "/api/processing/v1/videoConversion",
     method: "POST",
     token,
-    data: { imageKey, videoKey },
+    data: { imageKey, videoKey, materialBid },
   });
 }
 

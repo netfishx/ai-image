@@ -50,7 +50,10 @@ export function ImageForm({ coins }: { coins: number }) {
         toast.error(bRes.msg ?? "上传失败");
         return;
       }
-      const res = await imageConversion(aRes.data ?? "", bRes.data ?? "");
+      const res = await imageConversion({
+        imageKeyA: aRes.data ?? "",
+        imageKeyB: bRes.data ?? "",
+      });
       console.info(res);
       if (res.code !== 0) {
         toast.error(res.msg ?? "上传失败");

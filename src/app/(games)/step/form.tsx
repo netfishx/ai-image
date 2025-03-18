@@ -3,8 +3,14 @@
 import { Upload } from "@/app/(games)/step/upload";
 import mb from "@/assets/mb.png";
 import { Button } from "@/components/ui/button";
-import { gifConversion, upload } from "@/lib/api";
+import {
+  gifConversion,
+  imageConversion,
+  upload,
+  videoConversion,
+} from "@/lib/api";
 import { resourceAtom } from "@/lib/store";
+import type { Res } from "@/lib/types";
 import { rgbDataURL } from "@/lib/utils";
 import { useAtomValue } from "jotai";
 import { Loader2, Minus } from "lucide-react";
@@ -13,7 +19,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { type FormEvent, useEffect, useRef, useTransition } from "react";
 import { toast } from "sonner";
-export function UploadForm({ coins }: { coins: number }) {
+export function UploadForm({ coins, type }: { coins: number; type: string }) {
   const resource = useAtomValue(resourceAtom);
   const ref = useRef<HTMLFormElement>(null);
   const [isPending, startTransition] = useTransition();
@@ -38,16 +44,35 @@ export function UploadForm({ coins }: { coins: number }) {
         toast.error(aRes.msg ?? "上传失败");
         return;
       }
-      const res = await gifConversion({
-        imageKey: aRes.data ?? "",
-        materialBid: resource?.businessId ?? "",
-      });
+      let res: Res<unknown> | null = null;
+      switch (type) {
+        case "1":
+          res = await imageConversion({
+            imageKeyA: aRes.data ?? "",
+            materialBid: resource?.businessId ?? "",
+          });
+          break;
+        case "2":
+          res = await gifConversion({
+            imageKey: aRes.data ?? "",
+            materialBid: resource?.businessId ?? "",
+          });
+          break;
+        case "3":
+          res = await videoConversion({
+            imageKey: aRes.data ?? "",
+            materialBid: resource?.businessId ?? "",
+          });
+          break;
+        default:
+          break;
+      }
       console.info(res);
-      if (res.code !== 0) {
-        toast.error(res.msg ?? "上传失败");
+      if (res?.code !== 0) {
+        toast.error(res?.msg ?? "上传失败");
         return;
       }
-      toast.success(res.msg ?? "开始制作");
+      toast.success(res?.msg ?? "开始制作");
       router.replace("/records");
     });
   }

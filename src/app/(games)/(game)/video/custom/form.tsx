@@ -47,7 +47,10 @@ export function VideoForm({ coins }: { coins: number }) {
         toast.error(bRes.msg ?? "上传失败");
         return;
       }
-      const res = await videoConversion(aRes.data ?? "", bRes.data ?? "");
+      const res = await videoConversion({
+        imageKey: aRes.data ?? "",
+        videoKey: bRes.data ?? "",
+      });
       console.info(res);
       if (res.code !== 0) {
         toast.error(res.msg ?? "上传失败");

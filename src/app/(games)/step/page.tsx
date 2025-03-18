@@ -36,7 +36,7 @@ export default async function Step({
         <GoBack />
       </div>
       <Suspense fallback={<div>Loading...</div>}>
-        <UploadForm coins={coins} />
+        <UploadForm coins={coins} type={type ?? "1"} />
       </Suspense>
       <ul className="px-4 text-xs">
         <li>1.禁止上传未成年人或政府官员照片，如发现封号处理</li>
