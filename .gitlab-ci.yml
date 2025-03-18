@@ -3,15 +3,37 @@ build:
   tags:
     - build
   only:
-    - master
+    - test
   script:
-    - docker build -t 172.31.46.150:5555/ai-web:$CI_COMMIT_SHORT_SHA .
+    - docker build -f Dockerfile.test -t 172.31.46.150:5555/ai-web:$CI_COMMIT_SHORT_SHA .
     - docker push 172.31.46.150:5555/ai-web:$CI_COMMIT_SHORT_SHA
 
 deploy:
   stage: deploy
   tags:
     - ai
+  only:
+    - test
+  script:
+    - docker pull 18.163.249.24:5555/ai-web:$CI_COMMIT_SHORT_SHA
+    - docker stop ai-web || true
+    - docker rm ai-web || true
+    - docker run -d -p 4000:3000 --name ai-web --network ai --restart unless-stopped 18.163.249.24:5555/ai-web:$CI_COMMIT_SHORT_SHA
+
+build-prod:
+  stage: build
+  tags:
+    - build
+  only:
+    - master
+  script:
+    - docker build -f Dockerfile.prod -t 172.31.46.150:5555/ai-web:$CI_COMMIT_SHORT_SHA .
+    - docker push 172.31.46.150:5555/ai-web:$CI_COMMIT_SHORT_SHA
+
+deploy-prod:
+  stage: deploy
+  tags:
+    - ai-prod
   only:
     - master
   script:
