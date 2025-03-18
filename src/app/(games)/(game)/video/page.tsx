@@ -1,36 +1,53 @@
-import sample from "@/assets/sample2.jpg";
-import { Minus } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { getResource } from "@/lib/api";
+import { rgbDataURL } from "@/lib/utils";
+import { CloudUpload } from "lucide-react";
 import Image from "next/image";
-import { VideoForm } from "./form";
+import Link from "next/link";
+import { Suspense } from "react";
+import { ActionButton } from "./action";
 
 export default function VideoPage() {
   return (
-    <div className="flex flex-1 flex-col gap-4 px-2 py-4">
-      <VideoForm />
-      <div className="px-4 text-xs">
-        <div className="font-medium">注意事项:</div>
-        <ol className="list-decimal pl-4">
-          <li className="leading-relaxed">
-            素材仅供AI使用，绝无外泄风险，请放心使用
-          </li>
-          <li className="leading-relaxed">
-            选择合适的高清正面照，胸部尺寸不要被手臂，头发遮挡，尺寸选择正面站立图，不要使用多人图，最好是选择能看到手臂和起码半个身体的照片，环境光线不要太暗
-          </li>
-          <li className="leading-relaxed">
-            禁止上传未成年人或政府官员照片，如发现封号处理
-          </li>
-          <li className="leading-relaxed">
-            未按要求上传照片导致的失败或者效果不好，将不会退回金币
-          </li>
-        </ol>
-      </div>
-      <div className="flex items-center gap-2">
-        <Minus className="rotate-90" />
-        效果图
-      </div>
-      <div className="flex items-center px-4">
-        <Image src={sample} alt="效果图" width={2000} height={1000} />
-      </div>
-    </div>
+    <Suspense fallback={<div>Loading...</div>}>
+      <List />
+      <Button
+        className="fixed right-4 bottom-4 rounded-full bg-green-500"
+        asChild
+      >
+        <Link href="/video/custom">
+          <CloudUpload />
+          上传自定义素材
+        </Link>
+      </Button>
+    </Suspense>
+  );
+}
+
+async function List() {
+  const resource = await getResource(1);
+
+  return (
+    <ul className="grid grid-cols-2 gap-2 p-2">
+      {resource?.data?.map((item) => (
+        <li key={item.businessId} className="flex flex-col">
+          <div className="relative h-50 w-full">
+            <Image
+              src={item.materialUrl}
+              alt={item.businessId}
+              fill
+              placeholder="blur"
+              blurDataURL={rgbDataURL(200, 200, 200)}
+              className="rounded-t-2xl object-cover"
+              sizes="50vw"
+            />
+          </div>
+          <div className="flex items-center justify-between rounded-b-2xl bg-neutral-700/80 px-2 py-1">
+            <span className="text-wrap break-all text-xs">图片</span>
+            <ActionButton resource={item} />
+          </div>
+        </li>
+      ))}
+    </ul>
   );
 }

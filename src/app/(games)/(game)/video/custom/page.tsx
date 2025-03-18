@@ -1,10 +1,11 @@
-import { ImageForm } from "@/app/(games)/(game)/image/custom/form";
 import sample from "@/assets/sample2.jpg";
 import { getUserInfo } from "@/lib/api";
 import { Minus } from "lucide-react";
 import Image from "next/image";
 import { Suspense } from "react";
-export default function ImagePage() {
+import { VideoForm } from "./form";
+
+export default function VideoPage() {
   return (
     <div className="flex flex-1 flex-col gap-4 px-2 py-4">
       <Suspense>
@@ -41,5 +42,5 @@ export default function ImagePage() {
 async function FormWrapper() {
   const res = await getUserInfo();
   const coins = res.data?.coins ?? 0;
-  return <ImageForm coins={coins} />;
+  return <VideoForm coins={coins} />;
 }

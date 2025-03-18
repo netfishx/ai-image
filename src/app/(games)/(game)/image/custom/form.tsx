@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 import { type FormEvent, useRef, useTransition } from "react";
 import { toast } from "sonner";
 
-export function ImageForm() {
+export function ImageForm({ coins }: { coins: number }) {
   const ref = useRef<HTMLFormElement>(null);
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
@@ -85,6 +85,16 @@ export function ImageForm() {
       </div>
       <div>
         <Upload type="image" name="image" />
+      </div>
+      <div className="flex items-center justify-between gap-2 px-8 text-xs">
+        <span>
+          消耗金币：<span className="text-amber-400">8</span>
+        </span>
+        <span>
+          金币：
+          <span className="text-amber-400">{coins}</span>
+        </span>
+        <span>免费次数：0</span>
       </div>
       <div className="flex justify-center px-8">
         <Button type="submit" className="w-full" disabled={isPending}>

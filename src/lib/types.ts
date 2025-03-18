@@ -34,6 +34,8 @@ export type Resource = {
   materialUrl: string;
   materialCoins: number;
   materialType: number;
+  materialTitle: string;
+  materialPreviewUrl?: string | null;
 };
 
 export type RechargeRecord = {

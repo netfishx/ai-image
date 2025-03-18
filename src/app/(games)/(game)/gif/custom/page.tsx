@@ -1,12 +1,16 @@
 import sample from "@/assets/sample2.jpg";
+import { getUserInfo } from "@/lib/api";
 import { Minus } from "lucide-react";
 import Image from "next/image";
+import { Suspense } from "react";
 import { GifForm } from "./form";
 
 export default function GifPage() {
   return (
     <div className="flex flex-1 flex-col gap-4 px-2 py-4">
-      <GifForm />
+      <Suspense>
+        <FormWrapper />
+      </Suspense>
       <div className="px-4 text-xs">
         <div className="font-medium">注意事项:</div>
         <ol className="list-decimal pl-4">
@@ -33,4 +37,10 @@ export default function GifPage() {
       </div>
     </div>
   );
+}
+
+async function FormWrapper() {
+  const res = await getUserInfo();
+  const coins = res.data?.coins ?? 0;
+  return <GifForm coins={coins} />;
 }
