@@ -43,7 +43,7 @@ export default function Personal() {
             variant="outline"
             size="sm"
             asChild
-            className="rounded-full bg-transparent opacity-50"
+            className="rounded-full opacity-50 dark:bg-transparent"
           >
             <Link href="/login">登录账号</Link>
           </Button>
