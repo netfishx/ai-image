@@ -8,7 +8,6 @@ import type {
   UserInfo,
 } from "@/lib/types";
 import axios from "axios";
-import { redirect } from "next/navigation";
 import { apiRequest } from "./request";
 import { getSession, setSession } from "./session";
 
@@ -44,7 +43,6 @@ export async function login(userName: string, password: string) {
   });
   if (res.code === 0 && res.data) {
     await setSession(res.data);
-    return redirect("/yjty");
   }
   return res;
 }
