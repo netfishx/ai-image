@@ -27,7 +27,7 @@
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "jotai": "^2.12.2",
-    "lucide-react": "^0.482.0",
+    "lucide-react": "^0.483.0",
     "lz-string": "^1.5.0",
     "next": "15.3.0-canary.12",
     "next-themes": "^0.4.6",
