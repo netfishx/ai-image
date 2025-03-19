@@ -5,12 +5,14 @@ import { Label } from "@/components/ui/label";
 import { register } from "@/lib/api";
 import { Loader2 } from "lucide-react";
 import Form from "next/form";
+import { useRouter } from "next/navigation";
 import { type FormEvent, useRef, useTransition } from "react";
 import { toast } from "sonner";
 
 export function RegForm() {
   const formRef = useRef<HTMLFormElement>(null);
   const [isLoading, startTransition] = useTransition();
+  const router = useRouter();
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     startTransition(async () => {
@@ -28,6 +30,9 @@ export function RegForm() {
       const res = await register(userName, password);
       if (res.code !== 0) {
         toast.error(res?.msg ?? "注册失败");
+      } else {
+        toast.success("注册成功");
+        router.replace("/personal");
       }
     });
   }

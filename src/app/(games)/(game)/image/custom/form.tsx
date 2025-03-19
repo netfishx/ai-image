@@ -5,7 +5,6 @@ import Upload from "@/components/upload";
 import { imageConversion, upload } from "@/lib/api";
 import { Loader2, Minus } from "lucide-react";
 import Form from "next/form";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { type FormEvent, useRef, useTransition } from "react";
 import { toast } from "sonner";
@@ -75,9 +74,6 @@ export function ImageForm({ coins }: { coins: number }) {
           <Minus className="rotate-90" />
           请上传脸部照片
         </div>
-        <Button className="rounded-full" size="sm" asChild>
-          <Link href="/image">返回列表</Link>
-        </Button>
       </div>
       <div>
         <Upload type="image" name="face" />

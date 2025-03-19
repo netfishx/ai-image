@@ -1,10 +1,19 @@
 "use client";
 
+import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { recharge } from "@/lib/api";
+import { rechargeAlertAtom, rechargeAlertUrlAtom } from "@/lib/store";
 import { cn } from "@/lib/utils";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import { Loader2 } from "lucide-react";
 import Form from "next/form";
 import { type FormEvent, useState, useTransition } from "react";
@@ -27,9 +36,12 @@ export function RechargeForm() {
   ];
 
   const [isLoading, startTransition] = useTransition();
+  const setRechargeAlertUrl = useSetAtom(rechargeAlertUrlAtom);
+  const setRechargeAlert = useSetAtom(rechargeAlertAtom);
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
     startTransition(async () => {
       const formData = new FormData(e.currentTarget);
       const amount = formData.get("amount") as string;
@@ -37,7 +49,8 @@ export function RechargeForm() {
       if (res.code !== 0) {
         toast.error(res.msg ?? "充值失败");
       } else {
-        window.open(res.data, "_blank");
+        setRechargeAlertUrl(res.data);
+        setRechargeAlert(true);
       }
     });
   }
@@ -81,6 +94,33 @@ export function RechargeForm() {
         {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
         立即支付
       </Button>
+      <RechargeAlert />
     </Form>
+  );
+}
+
+function RechargeAlert() {
+  const [rechargeAlert, setRechargeAlert] = useAtom(rechargeAlertAtom);
+  const rechargeAlertUrl = useAtomValue(rechargeAlertUrlAtom);
+  return (
+    <AlertDialog open={rechargeAlert} onOpenChange={setRechargeAlert}>
+      <AlertDialogContent className="bg-foreground text-background">
+        <AlertDialogHeader>
+          <AlertDialogTitle>确认支付</AlertDialogTitle>
+        </AlertDialogHeader>
+        <AlertDialogFooter className="flex flex-row justify-center px-8">
+          <Button
+            onClick={() => {
+              setRechargeAlert(false);
+              window.open(rechargeAlertUrl, "_blank");
+            }}
+            variant="outline"
+            className="bg-foreground hover:bg-accent-foreground hover:text-accent"
+          >
+            去支付
+          </Button>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
   );
 }

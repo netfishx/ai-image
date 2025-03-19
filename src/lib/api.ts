@@ -63,7 +63,6 @@ export async function register(userName: string, password: string) {
   });
   if (res.code === 0 && res.data) {
     await setSession(res.data);
-    return redirect("/yjty");
   }
   return res;
 }
