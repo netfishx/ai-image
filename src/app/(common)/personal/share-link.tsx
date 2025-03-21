@@ -12,7 +12,6 @@ export function ShareLink() {
       href="#"
       onClick={(e) => {
         e.preventDefault();
-        console.info("click");
         setOpen(true);
       }}
     >

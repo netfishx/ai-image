@@ -1,5 +1,5 @@
 import { CommonHeader } from "@/app/(common)/common-header";
-import { ShareDialog } from "@/components/share";
+import { IdDialog, ShareDialog } from "@/components/share";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { getSession } from "@/lib/session";
 import type { ReactNode } from "react";
@@ -20,5 +20,10 @@ export default function Layout({ children }: { children: ReactNode }) {
 async function Dialog() {
   const session = await getSession();
   const username = session?.userName;
-  return <ShareDialog username={username ?? ""} />;
+  return (
+    <>
+      <ShareDialog username={username ?? ""} />
+      <IdDialog username={username ?? ""} />
+    </>
+  );
 }
