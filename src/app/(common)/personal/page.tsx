@@ -115,7 +115,7 @@ export default function Personal() {
           注册账号
         </Link>
       </div>
-      <div className="flex flex-col items-center justify-center pt-8 text-sm">
+      {/* <div className="flex flex-col items-center justify-center pt-8 text-sm">
         <div className="break-all">
           本站永久域名：
           <Button variant="link" className="p-0 text-cyan-500 underline">
@@ -135,7 +135,7 @@ export default function Personal() {
             https://t.me/yun_yun
           </Button>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
