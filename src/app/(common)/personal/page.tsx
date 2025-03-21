@@ -1,3 +1,4 @@
+import { IdLink } from "@/app/(common)/personal/id-link";
 import { ShareLink } from "@/app/(common)/personal/share-link";
 import { getBackgroundImageStyle } from "@/app/bg";
 import head from "@/assets/head.png";
@@ -5,13 +6,7 @@ import { Coins } from "@/components/coins";
 import { RefreshButton } from "@/components/refresh";
 import { Button } from "@/components/ui/button";
 import { getSession } from "@/lib/session";
-import {
-  Contact,
-  IdCard,
-  ReceiptText,
-  ShoppingCart,
-  UserCog,
-} from "lucide-react";
+import { Contact, ReceiptText, ShoppingCart, UserCog } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -106,10 +101,7 @@ export default function Personal() {
           <Contact />
           联系客服
         </Link>
-        <Link href="#">
-          <IdCard />
-          身份凭证
-        </Link>
+        <IdLink />
         <Link href="/reg">
           <UserCog />
           注册账号
