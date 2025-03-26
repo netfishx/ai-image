@@ -2,6 +2,7 @@
 import {
   AlertDialog,
   AlertDialogContent,
+  AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
@@ -74,9 +75,7 @@ export function PWAInstallDetector() {
       return;
     }
     const handleBeforeInstallPrompt = (e: BeforeInstallPromptEvent) => {
-      // 阻止自动显示安装提示
       e.preventDefault();
-      // 保存事件
       setInstallPrompt(e);
     };
 
@@ -136,6 +135,7 @@ export function PWAInstallDetector() {
       }
     >
       <AlertDialogContent className="bg-foreground text-background">
+        <AlertDialogDescription />
         <AlertDialogHeader>
           <AlertDialogTitle>安装应用</AlertDialogTitle>
         </AlertDialogHeader>
