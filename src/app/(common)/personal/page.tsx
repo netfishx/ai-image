@@ -43,11 +43,8 @@ export default function Personal() {
             <Link href="/login">登录账号</Link>
           </Button>
         </div>
-        <div className="flex items-center justify-between">
+        <div className="flex items-center">
           <span className="text-lg">普通用户</span>
-          <Button className="rounded-full bg-amber-500 text-lg" size="lg">
-            成为VIP
-          </Button>
         </div>
       </div>
       <div
