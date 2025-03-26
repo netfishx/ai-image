@@ -17,6 +17,7 @@ FROM base AS builder
 
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+
 COPY .env.local .env
 
 RUN bun run build
