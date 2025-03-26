@@ -11,19 +11,26 @@ import axios from "axios";
 import { apiRequest } from "./request";
 import { getSession, setSession } from "./session";
 
-export async function checkUser(inviteCode: string | null) {
+export async function checkUser(
+  inviteCode: string | null,
+  revenueBusinessId: string | null,
+) {
   const session = await getSession();
   if (!session) {
-    await guestLogin(inviteCode);
+    await guestLogin(inviteCode, revenueBusinessId);
   }
 }
 
-export async function guestLogin(userName: string | null) {
+export async function guestLogin(
+  userName: string | null,
+  revenueBusinessId: string | null,
+) {
   const res = await apiRequest<User>({
     url: "/api/account/v1/tourist",
     method: "POST",
     data: {
       userName,
+      revenueBusinessId,
     },
   });
   if (res.code === 0 && res.data) {
