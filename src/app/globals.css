@@ -25,7 +25,7 @@
     --input: oklch(93% 0.02 260);
     --ring: oklch(50% 0.25 260);
     --radius: 0.625rem;
-    --gold: oklch(75% 0.16 94);
+    --gold: oklch(78% 0.17 80);
   }
 
   .dark {
@@ -48,7 +48,6 @@
     --border: oklch(28% 0.04 260);
     --input: oklch(28% 0.04 260);
     --ring: oklch(60% 0.22 260);
-    --gold: oklch(70% 0.16 90);
   }
 }
 @layer base {
