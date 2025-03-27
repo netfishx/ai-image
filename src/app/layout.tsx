@@ -19,7 +19,7 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className="flex h-screen flex-col overflow-hidden">
+      <body className="mx-auto flex h-screen max-w-screen-sm flex-col overflow-hidden">
         <JotaiProvider>
           <ViewTransition>
             <Suspense>{children}</Suspense>
