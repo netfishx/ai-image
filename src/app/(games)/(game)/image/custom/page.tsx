@@ -1,5 +1,5 @@
 import { ImageForm } from "@/app/(games)/(game)/image/custom/form";
-import sample from "@/assets/sample2.jpg";
+import sample from "@/assets/sample.jpg";
 import { getUserInfo } from "@/lib/api";
 import { Minus } from "lucide-react";
 import Image from "next/image";
@@ -31,8 +31,10 @@ export default function ImagePage() {
         <Minus className="rotate-90" />
         效果图
       </div>
-      <div className="flex items-center px-4">
-        <Image src={sample} alt="效果图" width={2000} height={1000} />
+      <div className="px-4">
+        <div className="relative aspect-[5/3]">
+          <Image src={sample} alt="效果图" fill className="object-cover" />
+        </div>
       </div>
     </div>
   );
