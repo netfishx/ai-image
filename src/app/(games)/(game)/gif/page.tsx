@@ -13,7 +13,7 @@ export default function GifPage() {
       <List />
       <Button
         size="lg"
-        className="fixed right-4 bottom-4 rounded-full bg-green-500"
+        className="fixed right-4 bottom-4 rounded-full bg-primary"
         asChild
       >
         <Link href="/gif/custom">

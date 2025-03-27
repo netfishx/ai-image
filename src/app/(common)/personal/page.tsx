@@ -14,7 +14,7 @@ import { Suspense } from "react";
 export default function Personal() {
   return (
     <div
-      className="flex flex-1 flex-col gap-4 bg-cover px-4 pt-8"
+      className="flex h-[calc(100dvh-3rem)] flex-col gap-4 bg-cover px-4 pt-8"
       style={getBackgroundImageStyle("main")}
     >
       <div
@@ -54,7 +54,7 @@ export default function Personal() {
         <div className="flex items-center justify-between">
           <div>我的钱包</div>
           <div className="flex gap-2">
-            <Button size="sm" className="rounded-full bg-amber-400" asChild>
+            <Button size="sm" className="rounded-full bg-amber-500" asChild>
               <Link href="/recharge">立即充值</Link>
             </Button>
             <Button size="sm" className="rounded-full bg-primary" asChild>
@@ -63,7 +63,7 @@ export default function Personal() {
           </div>
         </div>
         <div className="flex items-center gap-1 text-sm">
-          <span className="text-amber-400 text-xl">
+          <span className="text-amber-500 text-xl">
             <Suspense>
               <Coins />
             </Suspense>

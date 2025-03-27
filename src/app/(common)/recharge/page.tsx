@@ -9,7 +9,7 @@ import { RechargeForm } from "./form";
 export default function Recharge() {
   return (
     <div
-      className="flex flex-1 flex-col gap-4 bg-cover px-4 pt-8"
+      className="flex h-[calc(100dvh-3rem)] flex-col gap-4 bg-cover px-4 pt-8"
       style={getBackgroundImageStyle("main")}
     >
       <div className="flex flex-col gap-4 rounded-lg bg-background/80 bg-cover p-4">

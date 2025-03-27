@@ -9,7 +9,9 @@ export default function Layout({ children }: { children: ReactNode }) {
   return (
     <>
       <CommonHeader />
-      <ScrollArea className="h-[calc(100vh-3rem)]">{children}</ScrollArea>
+      <ScrollArea className="flex h-[calc(100vh-3rem)] flex-col">
+        {children}
+      </ScrollArea>
       <Suspense>
         <Dialog />
       </Suspense>

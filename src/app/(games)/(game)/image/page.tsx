@@ -12,7 +12,7 @@ export default function GifPage() {
     <Suspense fallback={<div>Loading...</div>}>
       <List />
       <Button
-        className="fixed right-4 bottom-4 rounded-full bg-green-500"
+        className="fixed right-4 bottom-4 rounded-full bg-primary"
         asChild
       >
         <Link href="/image/custom">

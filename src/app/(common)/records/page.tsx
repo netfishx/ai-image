@@ -10,7 +10,7 @@ import { Suspense } from "react";
 export default function RecordsPage() {
   return (
     <div
-      className="flex flex-1 flex-col gap-4 bg-cover p-4"
+      className="flex h-[calc(100dvh-3rem)] flex-col gap-4 bg-cover p-4"
       style={getBackgroundImageStyle("main")}
     >
       <Suspense>
