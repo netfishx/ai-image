@@ -41,7 +41,7 @@ async function List() {
               className="rounded-t-2xl object-cover"
               sizes="50vw"
             />
-            <div className="absolute bottom-1 left-1 flex items-center gap-1 text-amber-400">
+            <div className="absolute bottom-1 left-1 flex items-center gap-1 text-gold">
               <Gem />
               {item.materialCoins}
             </div>

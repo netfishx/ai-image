@@ -121,23 +121,23 @@ export function UploadForm({ coins, type }: { coins: number; type: string }) {
       <div className="p-4">
         <div className="grid grid-cols-4 gap-2 rounded-full bg-primary px-4 py-2 text-sm *:flex *:flex-col *:items-center *:justify-center">
           <div>
-            <span className="text-amber-400 text-xs">
+            <span className="text-gold text-xs">
               {resource?.materialCoins ?? 0}
             </span>
             <span>消耗金币</span>
           </div>
           <div>
-            <span className="text-amber-400 text-xs">0</span>
+            <span className="text-gold text-xs">0</span>
             <span>剩余次数</span>
           </div>
           <div>
-            <span className="text-amber-400 text-xs">{coins}.00</span>
+            <span className="text-gold text-xs">{coins}.00</span>
             <span>账户余额</span>
           </div>
           <div>
             <Button
               type="submit"
-              className="rounded-full bg-amber-400 text-sm"
+              className="rounded-full bg-gold text-sm"
               size="sm"
               disabled={isPending}
             >

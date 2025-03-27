@@ -15,7 +15,7 @@ export function Header() {
         <Suspense>
           <UserName />
         </Suspense>
-        <Button asChild size="sm" className="h-7 rounded-full bg-amber-400/80">
+        <Button asChild size="sm" className="h-7 rounded-full bg-gold/80">
           <Link href="/recharge">充值</Link>
         </Button>
       </div>

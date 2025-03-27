@@ -9,7 +9,7 @@ export async function UserName() {
   return (
     <div className="flex items-center gap-1 text-sm">
       <span>{session?.userName ?? ""}</span>
-      <CircleDollarSign className="size-4 text-amber-400" />
+      <CircleDollarSign className="size-4 text-gold" />
       <span>
         <Coins />
       </span>

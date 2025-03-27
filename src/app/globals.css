@@ -25,6 +25,7 @@
     --input: oklch(93% 0.02 260);
     --ring: oklch(50% 0.25 260);
     --radius: 0.625rem;
+    --gold: oklch(75% 0.16 94);
   }
 
   .dark {
@@ -34,7 +35,7 @@
     --card-foreground: oklch(97% 0.005 260);
     --popover: oklch(20% 0.04 260);
     --popover-foreground: oklch(97% 0.005 260);
-    --primary: oklch(60% 0.22 260);
+    --primary: oklch(67% 0.15 155);
     --primary-foreground: oklch(97% 0.005 260);
     --secondary: oklch(28% 0.04 260);
     --secondary-foreground: oklch(97% 0.005 260);
@@ -47,6 +48,7 @@
     --border: oklch(28% 0.04 260);
     --input: oklch(28% 0.04 260);
     --ring: oklch(60% 0.22 260);
+    --gold: oklch(70% 0.16 90);
   }
 }
 @layer base {
@@ -88,6 +90,7 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   --animate-marquee: marquee 10s infinite linear;
+  --color-gold: var(--gold);
 
   @keyframes marquee {
     from {

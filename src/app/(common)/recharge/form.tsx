@@ -79,7 +79,7 @@ export function RechargeForm() {
                   "transition-all duration-200",
                   selectedPackage === pkg.price.toString()
                     ? "bg-blue-500 text-white"
-                    : "bg-orange-200 text-slate-900 hover:border-amber-400",
+                    : "bg-orange-200 text-slate-900 hover:border-gold",
                 )}
               >
                 <span className="font-bold text-3xl">{pkg.coins}</span>

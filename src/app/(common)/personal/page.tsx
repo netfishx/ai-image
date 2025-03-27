@@ -54,7 +54,7 @@ export default function Personal() {
         <div className="flex items-center justify-between">
           <div>我的钱包</div>
           <div className="flex gap-2">
-            <Button size="sm" className="rounded-full bg-amber-500" asChild>
+            <Button size="sm" className="rounded-full bg-gold" asChild>
               <Link href="/recharge">立即充值</Link>
             </Button>
             <Button size="sm" className="rounded-full bg-primary" asChild>
@@ -63,7 +63,7 @@ export default function Personal() {
           </div>
         </div>
         <div className="flex items-center gap-1 text-sm">
-          <span className="text-amber-500 text-xl">
+          <span className="text-gold text-xl">
             <Suspense>
               <Coins />
             </Suspense>

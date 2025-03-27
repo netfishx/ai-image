@@ -82,11 +82,11 @@ export function VideoForm({ coins }: { coins: number }) {
       </div>
       <div className="flex items-center justify-between gap-2 px-8 text-xs">
         <span>
-          消耗金币：<span className="text-amber-400">45</span>
+          消耗金币：<span className="text-gold">45</span>
         </span>
         <span>
           金币：
-          <span className="text-amber-400">{coins}</span>
+          <span className="text-gold">{coins}</span>
         </span>
         <span>免费次数：0</span>
       </div>
