@@ -24,7 +24,12 @@ export function YjtyForm({ coins }: { coins: number }) {
         console.info(key, value);
       });
       const aFormData = new FormData();
-      aFormData.append("file", formData.get("image") as File);
+      const file = formData.get("image") as File;
+      if (!file || file.size === 0) {
+        toast.error("请上传图片");
+        return;
+      }
+      aFormData.append("file", file);
       const aRes = await upload(aFormData);
       console.info(aRes);
       if (aRes.code !== 0) {
