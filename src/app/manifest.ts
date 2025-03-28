@@ -2,13 +2,13 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "aitools888",
-    short_name: "aitools888",
-    description: "aitools888",
+    name: "ai-tuoyi",
+    short_name: "ai-tuoyi",
+    description: "ai-tuoyi",
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",
-    theme_color: "#2eaf6b",
+    theme_color: "#1cce79",
     icons: [
       {
         src: "/icon-192x192.png",
