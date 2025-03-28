@@ -9,7 +9,7 @@ export type Res<T> = {
 export const UserSchema = z.object({
   userName: z.string(),
   token: z.string(),
-  coins: z.number().nullable(),
+  coins: z.number().nullish(),
 });
 
 export type User = z.infer<typeof UserSchema>;
