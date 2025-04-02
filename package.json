@@ -29,14 +29,14 @@
     "jotai": "^2.12.2",
     "lucide-react": "^0.486.0",
     "lz-string": "^1.5.0",
-    "next": "15.3.0-canary.26",
+    "next": "15.3.0-canary.29",
     "next-themes": "^0.4.6",
     "pino-http": "^10.4.0",
     "qrcode.react": "^4.2.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-use": "^17.6.0",
-    "sonner": "^2.0.2",
+    "sonner": "^2.0.3",
     "tailwind-merge": "^3.1.0",
     "vaul": "^1.1.2",
     "zod": "^3.24.2"
@@ -52,7 +52,7 @@
     "typescript": "^5"
   },
   "overrides": {
-    "next": "15.3.0-canary.26",
+    "next": "15.3.0-canary.29",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-is": "^19.0.0",
@@ -64,6 +64,6 @@
     "sharp"
   ],
   "patchedDependencies": {
-    "next@15.3.0-canary.26": "patches/next@15.3.0-canary.26.patch"
+    "next@15.3.0-canary.29": "patches/next@15.3.0-canary.29.patch"
   }
 }
