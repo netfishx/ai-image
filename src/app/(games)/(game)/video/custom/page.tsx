@@ -1,7 +1,4 @@
-import sample from "@/assets/sample.jpg";
 import { getUserInfo } from "@/lib/api";
-import { Minus } from "lucide-react";
-import Image from "next/image";
 import { Suspense } from "react";
 import { VideoForm } from "./form";
 
@@ -27,15 +24,6 @@ export default function VideoPage() {
             未按要求上传照片导致的失败或者效果不好，将不会退回金币
           </li>
         </ol>
-      </div>
-      <div className="flex items-center gap-2">
-        <Minus className="rotate-90" />
-        效果图
-      </div>
-      <div className="px-4">
-        <div className="relative aspect-[5/3]">
-          <Image src={sample} alt="效果图" fill className="object-cover" />
-        </div>
       </div>
     </div>
   );
