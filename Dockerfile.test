@@ -1,4 +1,4 @@
-FROM oven/bun:1.2.4-slim AS base
+FROM oven/bun:slim AS base
 
 WORKDIR /app
 
@@ -9,7 +9,7 @@ FROM base AS deps
 
 RUN --mount=type=bind,source=package.json,target=package.json \
     --mount=type=bind,source=bun.lock,target=bun.lock \
-    --mount=type=bind,source=patches/next@15.3.0-canary.33.patch,target=patches/next@15.3.0-canary.33.patch \
+    --mount=type=bind,source=patches/next@15.3.0-canary.45.patch,target=patches/next@15.3.0-canary.45.patch \
     --mount=type=cache,target=/root/.bun \
     bun install --frozen-lockfile
 
