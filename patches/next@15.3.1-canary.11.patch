@@ -1,16 +1,16 @@
 diff --git a/dist/server/lib/start-server.js b/dist/server/lib/start-server.js
-index d4cbc252101382891581422f56557f2aa62aa809..f10fd7d0070ec9a3f3807f85e83f4601cd219841 100644
+index 96db246d9419d0c1147e49b4a108b0dec8d362cd..8898f3f8ba7f4d491daad442b29d8cea985435a0 100644
 --- a/dist/server/lib/start-server.js
 +++ b/dist/server/lib/start-server.js
-@@ -42,6 +42,7 @@ const _trace = require("../../trace");
- const _ispostpone = require("./router-utils/is-postpone");
+@@ -41,6 +41,7 @@ const _turbopackwarning = require("../../lib/turbopack-warning");
+ const _trace = require("../../trace");
  const _isipv6 = require("./is-ipv6");
  const _asynccallbackset = require("./async-callback-set");
 +const _logger = require("pino-http")();
  function _interop_require_default(obj) {
      return obj && obj.__esModule ? obj : {
          default: obj
-@@ -150,6 +151,7 @@ async function startServer(serverOptions) {
+@@ -149,6 +150,7 @@ async function startServer(serverOptions) {
          });
      }
      async function requestListener(req, res) {
