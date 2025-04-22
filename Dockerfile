@@ -24,8 +24,8 @@ RUN bun run build
 
 FROM base AS runner
 
-RUN addgroup --system --gid 1002 nodejs
-RUN adduser --system --uid 1002 nextjs
+RUN addgroup --system --gid 999 nodejs
+RUN adduser --system --uid 999 nextjs
 
 RUN mkdir .next
 RUN chown nextjs:nodejs .next
