@@ -1,8 +1,11 @@
+diff --git a/node_modules/next/.bun-tag-df6586e6e317c86f b/.bun-tag-df6586e6e317c86f
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
 diff --git a/dist/server/lib/start-server.js b/dist/server/lib/start-server.js
-index 05cfbd12afb07ad54a444dfcfd84863b28503781..e3c8bda2a6f33493293049ab17d4a2c20fd2859e 100644
+index 0aa22881edf76144bc50049a3cdbdbf013f34e18..8e8dc318fea0642fed129dcfb0be76d8ebf3ce8e 100644
 --- a/dist/server/lib/start-server.js
 +++ b/dist/server/lib/start-server.js
-@@ -41,6 +41,7 @@ const _turbopackwarning = require("../../lib/turbopack-warning");
+@@ -44,6 +44,7 @@ const _turbopackwarning = require("../../lib/turbopack-warning");
  const _trace = require("../../trace");
  const _isipv6 = require("./is-ipv6");
  const _asynccallbackset = require("./async-callback-set");
@@ -10,7 +13,7 @@ index 05cfbd12afb07ad54a444dfcfd84863b28503781..e3c8bda2a6f33493293049ab17d4a2c2
  function _interop_require_default(obj) {
      return obj && obj.__esModule ? obj : {
          default: obj
-@@ -149,6 +150,7 @@ async function startServer(serverOptions) {
+@@ -218,6 +219,7 @@ async function startServer(serverOptions) {
          });
      }
      async function requestListener(req, res) {

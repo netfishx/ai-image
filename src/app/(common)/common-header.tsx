@@ -1,9 +1,9 @@
 "use client";
 
-import { getBackgroundImageStyle } from "@/app/bg";
-import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
+import { getBackgroundImageStyle } from "@/app/bg";
+import { Button } from "@/components/ui/button";
 
 export function CommonHeader() {
   const router = useRouter();
@@ -40,8 +40,8 @@ export function CommonHeader() {
         onClick={() => {
           router.push("/");
         }}
-        variant="ghost"
         size="icon"
+        variant="ghost"
       >
         <ArrowLeft className="size-7" />
       </Button>

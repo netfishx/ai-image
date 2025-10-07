@@ -1,10 +1,10 @@
-import { Button } from "@/components/ui/button";
-import { getResource } from "@/lib/api";
-import { rgbDataURL } from "@/lib/utils";
 import { CloudUpload, Gem } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
+import { Button } from "@/components/ui/button";
+import { getResource } from "@/lib/api";
+import { rgbDataURL } from "@/lib/utils";
 import { ActionButton } from "./action";
 
 export default function GifPage() {
@@ -12,9 +12,9 @@ export default function GifPage() {
     <Suspense fallback={<div>Loading...</div>}>
       <List />
       <Button
-        size="lg"
-        className="fixed right-4 bottom-4 rounded-full bg-primary"
         asChild
+        className="fixed right-4 bottom-4 rounded-full bg-primary"
+        size="lg"
       >
         <Link href="/gif/custom">
           <CloudUpload />
@@ -31,16 +31,16 @@ async function List() {
   return (
     <ul className="grid grid-cols-2 gap-2 p-2">
       {resource?.data?.map((item) => (
-        <li key={item.businessId} className="flex flex-col">
+        <li className="flex flex-col" key={item.businessId}>
           <div className="relative h-50 w-full">
             <Image
-              src={item.materialUrl}
               alt={item.businessId}
-              fill
-              placeholder="blur"
               blurDataURL={rgbDataURL(200, 200, 200)}
               className="rounded-t-2xl object-cover"
+              fill
+              placeholder="blur"
               sizes="50vw"
+              src={item.materialUrl}
             />
             <div className="absolute bottom-1 left-1 flex items-center gap-1 text-gold">
               <Gem />

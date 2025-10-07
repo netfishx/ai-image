@@ -1,5 +1,6 @@
 "use client";
 
+import { useAtom, useSetAtom } from "jotai";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -10,15 +11,13 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import {} from "@/components/ui/dialog";
 import { downloadAlertAtom, shareDialogAtom } from "@/lib/store";
-import { useAtom, useSetAtom } from "jotai";
 
 export function DownloadAlert() {
   const [open, setOpen] = useAtom(downloadAlertAtom);
   const setShareDialogOpen = useSetAtom(shareDialogAtom);
   return (
-    <AlertDialog open={open} onOpenChange={setOpen}>
+    <AlertDialog onOpenChange={setOpen} open={open}>
       <AlertDialogContent className="bg-foreground text-background">
         <AlertDialogHeader>
           <AlertDialogTitle>温馨提示</AlertDialogTitle>

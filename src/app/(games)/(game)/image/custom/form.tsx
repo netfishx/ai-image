@@ -1,13 +1,13 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import Upload from "@/components/upload";
-import { imageConversion, upload } from "@/lib/api";
 import { Loader2, Minus } from "lucide-react";
 import Form from "next/form";
 import { useRouter } from "next/navigation";
 import { type FormEvent, useRef, useTransition } from "react";
 import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
+import Upload from "@/components/upload";
+import { imageConversion, upload } from "@/lib/api";
 
 export function ImageForm({ coins }: { coins: number }) {
   const ref = useRef<HTMLFormElement>(null);
@@ -65,9 +65,9 @@ export function ImageForm({ coins }: { coins: number }) {
   return (
     <Form
       action=""
+      className="flex flex-col gap-4"
       onSubmit={handleSubmit}
       ref={ref}
-      className="flex flex-col gap-4"
     >
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
@@ -76,14 +76,14 @@ export function ImageForm({ coins }: { coins: number }) {
         </div>
       </div>
       <div>
-        <Upload type="image" name="face" />
+        <Upload name="face" type="image" />
       </div>
       <div className="flex items-center gap-2">
         <Minus className="rotate-90" />
         请上传原图
       </div>
       <div>
-        <Upload type="image" name="image" />
+        <Upload name="image" type="image" />
       </div>
       <div className="flex items-center justify-between gap-2 px-8 text-xs">
         <span>
@@ -96,7 +96,7 @@ export function ImageForm({ coins }: { coins: number }) {
         <span>免费次数：0</span>
       </div>
       <div className="flex justify-center px-8">
-        <Button type="submit" className="w-full" disabled={isPending}>
+        <Button className="w-full" disabled={isPending} type="submit">
           {isPending && <Loader2 className="animate-spin" />}
           立刻制作
         </Button>

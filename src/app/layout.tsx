@@ -1,15 +1,18 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Provider as JotaiProvider } from "jotai";
+import {
+  type ReactNode,
+  Suspense,
+  unstable_ViewTransition as ViewTransition,
+} from "react";
 import { CheckUser } from "@/app/check-user";
 import { Toaster } from "@/components/ui/sonner";
-import { Provider as JotaiProvider } from "jotai";
-import { type ReactNode, Suspense } from "react";
-import { unstable_ViewTransition as ViewTransition } from "react";
 import { PWAInstallDetector } from "./pwa";
 
 export const metadata: Metadata = {
-  title: "AI Web",
   description: "AI Web",
+  title: "AI Web",
 };
 
 export default async function RootLayout({
@@ -18,18 +21,18 @@ export default async function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html className="dark" lang="en">
       <body className="mx-auto flex h-screen flex-col overflow-hidden">
         <JotaiProvider>
           <ViewTransition>
             <Suspense>{children}</Suspense>
           </ViewTransition>
           <Toaster
+            expand
             position="top-center"
             richColors
-            expand
-            visibleToasts={2}
             toastOptions={{ duration: 4000 }}
+            visibleToasts={2}
           />
           <Suspense>
             <CheckUser />

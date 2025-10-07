@@ -1,7 +1,7 @@
+import type { ReactNode } from "react";
 import { Header } from "@/app/(games)/header";
 import { getBackgroundImageStyle } from "@/app/bg";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import type { ReactNode } from "react";
 
 export default async function RootLayout({
   children,

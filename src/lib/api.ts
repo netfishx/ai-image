@@ -1,5 +1,6 @@
 "use server";
 
+import axios from "axios";
 import type {
   RechargeRecord,
   Record,
@@ -7,7 +8,6 @@ import type {
   User,
   UserInfo,
 } from "@/lib/types";
-import axios from "axios";
 import { apiRequest } from "./request";
 import { getSession, setSession } from "./session";
 
@@ -26,12 +26,12 @@ export async function guestLogin(
   revenueBusinessId: string | null,
 ) {
   const res = await apiRequest<User>({
-    url: "/api/account/v1/tourist",
-    method: "POST",
     data: {
-      userName,
       revenueBusinessId,
+      userName,
     },
+    method: "POST",
+    url: "/api/account/v1/tourist",
   });
   if (res.code === 0 && res.data) {
     await setSession(res.data);
@@ -41,12 +41,12 @@ export async function guestLogin(
 
 export async function login(userName: string, password: string) {
   const res = await apiRequest<User>({
-    url: "/api/account/v1/login",
-    method: "POST",
     data: {
-      userName,
       password,
+      userName,
     },
+    method: "POST",
+    url: "/api/account/v1/login",
   });
   if (res.code === 0 && res.data) {
     await setSession(res.data);
@@ -58,13 +58,13 @@ export async function register(userName: string, password: string) {
   const session = await getSession();
   const token = session?.token;
   const res = await apiRequest<User>({
-    url: "/api/account/v1/register",
+    data: {
+      password,
+      userName,
+    },
     method: "POST",
     token,
-    data: {
-      userName,
-      password,
-    },
+    url: "/api/account/v1/register",
   });
   if (res.code === 0 && res.data) {
     await setSession(res.data);
@@ -76,8 +76,8 @@ export async function getRecords() {
   const session = await getSession();
   const token = session?.token;
   const res = await apiRequest<Record[]>({
-    url: "/api/order/v1/queryOrder",
     token,
+    url: "/api/order/v1/queryOrder",
   });
   return res.data;
 }
@@ -86,14 +86,14 @@ export async function upload(data: FormData) {
   const session = await getSession();
   const token = session?.token;
   const res = await axios({
-    url: `${process.env.BASE_URL}/api/processing/v1/upFile`,
-    method: "POST",
     data,
     headers: {
       "Content-Type": "multipart/form-data",
       token,
     },
     maxBodyLength: 1024 * 1024 * 1024,
+    method: "POST",
+    url: `${process.env.BASE_URL}/api/processing/v1/upFile`,
   });
   console.group("upload");
   console.dir(res.data, { depth: null });
@@ -117,14 +117,14 @@ export async function imageConversion({
   const session = await getSession();
   const token = session?.token;
   return await apiRequest({
-    url: "/api/processing/v1/imageConversion",
-    method: "POST",
-    token,
     data: {
       imageKeyA,
       imageKeyB,
       materialBid,
     },
+    method: "POST",
+    token,
+    url: "/api/processing/v1/imageConversion",
   });
 }
 
@@ -140,10 +140,10 @@ export async function gifConversion({
   const session = await getSession();
   const token = session?.token;
   return await apiRequest({
-    url: "/api/processing/v1/gifConversion",
+    data: { gifKey, imageKey, materialBid },
     method: "POST",
     token,
-    data: { gifKey, imageKey, materialBid },
+    url: "/api/processing/v1/gifConversion",
   });
 }
 
@@ -159,10 +159,10 @@ export async function videoConversion({
   const session = await getSession();
   const token = session?.token;
   return await apiRequest({
-    url: "/api/processing/v1/videoConversion",
+    data: { imageKey, materialBid, videoKey },
     method: "POST",
     token,
-    data: { imageKey, videoKey, materialBid },
+    url: "/api/processing/v1/videoConversion",
   });
 }
 
@@ -170,10 +170,10 @@ export async function takeOff(key: string) {
   const session = await getSession();
   const token = session?.token;
   return await apiRequest({
-    url: "/api/processing/v1/takeOff",
+    data: { key },
     method: "POST",
     token,
-    data: { key },
+    url: "/api/processing/v1/takeOff",
   });
 }
 
@@ -181,10 +181,10 @@ export async function deleteOrder(businessId: string) {
   const session = await getSession();
   const token = session?.token;
   return await apiRequest({
-    url: "/api/order/v1/deleteOrder",
+    data: { businessId },
     method: "POST",
     token,
-    data: { businessId },
+    url: "/api/order/v1/deleteOrder",
   });
 }
 
@@ -192,8 +192,8 @@ export async function getUserInfo() {
   const session = await getSession();
   const token = session?.token;
   return await apiRequest<UserInfo>({
-    url: "/api/account/v1/User",
     token,
+    url: "/api/account/v1/User",
   });
 }
 
@@ -201,8 +201,8 @@ export async function checkDownload() {
   const session = await getSession();
   const token = session?.token;
   return await apiRequest<boolean>({
-    url: "/api/account/v1/canDownloaded",
     token,
+    url: "/api/account/v1/canDownloaded",
   });
 }
 
@@ -210,11 +210,11 @@ export async function getResource(materialType: number) {
   const session = await getSession();
   const token = session?.token;
   return await apiRequest<Resource[]>({
-    url: "/api/processing/v1/materialList",
-    token,
     params: {
       materialType,
     },
+    token,
+    url: "/api/processing/v1/materialList",
   });
 }
 
@@ -222,12 +222,12 @@ export async function recharge(amount: number) {
   const session = await getSession();
   const token = session?.token;
   return await apiRequest<string>({
-    url: "/api/order/v1/recharge",
-    method: "POST",
-    token,
     data: {
       amount,
     },
+    method: "POST",
+    token,
+    url: "/api/order/v1/recharge",
   });
 }
 
@@ -235,7 +235,7 @@ export async function getRechargeRecords() {
   const session = await getSession();
   const token = session?.token;
   return await apiRequest<RechargeRecord[]>({
-    url: "/api/order/v1/queryRecharge",
     token,
+    url: "/api/order/v1/queryRecharge",
   });
 }

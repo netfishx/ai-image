@@ -1,13 +1,13 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { login } from "@/lib/api";
 import { Loader2 } from "lucide-react";
 import Form from "next/form";
 import { useRouter } from "next/navigation";
 import { type FormEvent, useRef, useTransition } from "react";
 import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { login } from "@/lib/api";
 
 export function LoginForm() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -38,28 +38,28 @@ export function LoginForm() {
         <div className="grid w-full gap-2">
           <Label htmlFor="userName">用户名</Label>
           <Input
+            className="h-12 bg-foreground/20 backdrop-blur-sm"
             id="userName"
             name="userName"
             placeholder="请输入用户名"
-            className="h-12 bg-foreground/20 backdrop-blur-sm"
             required
           />
         </div>
         <div className="grid w-full gap-2 pb-2">
           <Label htmlFor="password">密码</Label>
           <Input
+            className="h-12 bg-foreground/20 backdrop-blur-sm"
             id="password"
             name="password"
-            type="password"
             placeholder="请输入密码"
-            className="h-12 bg-foreground/20 backdrop-blur-sm"
             required
+            type="password"
           />
         </div>
         <Button
-          type="submit"
           className="h-12 w-full text-lg"
           disabled={isLoading}
+          type="submit"
         >
           {isLoading && <Loader2 className="animate-spin" />}
           登录

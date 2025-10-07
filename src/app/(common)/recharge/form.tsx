@@ -1,5 +1,10 @@
 "use client";
 
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
+import { Loader2 } from "lucide-react";
+import Form from "next/form";
+import { type FormEvent, useState, useTransition } from "react";
+import { toast } from "sonner";
 import {
   AlertDialog,
   AlertDialogContent,
@@ -13,11 +18,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { recharge } from "@/lib/api";
 import { rechargeAlertAtom, rechargeAlertUrlAtom } from "@/lib/store";
 import { cn } from "@/lib/utils";
-import { useAtom, useAtomValue, useSetAtom } from "jotai";
-import { Loader2 } from "lucide-react";
-import Form from "next/form";
-import { type FormEvent, useState, useTransition } from "react";
-import { toast } from "sonner";
+
 interface CoinPackage {
   coins: number;
   price: number;
@@ -60,20 +61,19 @@ export function RechargeForm() {
       <div className="flex flex-col gap-4 rounded-lg bg-background/80 bg-cover p-2">
         <div className="text-center text-lg">金币套餐</div>
         <RadioGroup
-          value={selectedPackage}
-          onValueChange={setSelectedPackage}
           className="grid grid-cols-3 gap-2"
           name="amount"
+          onValueChange={setSelectedPackage}
+          value={selectedPackage}
         >
           {coinPackages.map((pkg) => (
-            <div key={pkg.price} className="relative">
+            <div className="relative" key={pkg.price}>
               <RadioGroupItem
-                value={pkg.price.toString()}
-                id={`coin-${pkg.price}`}
                 className="sr-only"
+                id={`coin-${pkg.price}`}
+                value={pkg.price.toString()}
               />
               <Label
-                htmlFor={`coin-${pkg.price}`}
                 className={cn(
                   "flex h-28 cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-transparent",
                   "transition-all duration-200",
@@ -81,6 +81,7 @@ export function RechargeForm() {
                     ? "bg-blue-500 text-white"
                     : "bg-orange-200 text-slate-900 hover:border-gold",
                 )}
+                htmlFor={`coin-${pkg.price}`}
               >
                 <span className="font-bold text-3xl">{pkg.coins}</span>
                 <span className="text-sm">金币</span>
@@ -90,7 +91,7 @@ export function RechargeForm() {
           ))}
         </RadioGroup>
       </div>
-      <Button className="w-full" size="lg" type="submit" disabled={isLoading}>
+      <Button className="w-full" disabled={isLoading} size="lg" type="submit">
         {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
         立即支付
       </Button>
@@ -103,19 +104,19 @@ function RechargeAlert() {
   const [rechargeAlert, setRechargeAlert] = useAtom(rechargeAlertAtom);
   const rechargeAlertUrl = useAtomValue(rechargeAlertUrlAtom);
   return (
-    <AlertDialog open={rechargeAlert} onOpenChange={setRechargeAlert}>
+    <AlertDialog onOpenChange={setRechargeAlert} open={rechargeAlert}>
       <AlertDialogContent className="bg-foreground text-background">
         <AlertDialogHeader>
           <AlertDialogTitle>确认支付</AlertDialogTitle>
         </AlertDialogHeader>
         <AlertDialogFooter className="flex flex-row justify-center px-8">
           <Button
+            className="bg-foreground hover:bg-accent-foreground hover:text-accent"
             onClick={() => {
               setRechargeAlert(false);
               window.open(rechargeAlertUrl, "_blank");
             }}
             variant="outline"
-            className="bg-foreground hover:bg-accent-foreground hover:text-accent"
           >
             去支付
           </Button>

@@ -1,11 +1,4 @@
 {
-  "prettier.enable": false,
-  "eslint.enable": false,
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "quickfix.biome": "explicit",
-    "source.organizeImports.biome": "explicit"
-  },
   "[css]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
@@ -18,11 +11,17 @@
   "[typescriptreact]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
-  "files.associations": {
-    "*.css": "tailwindcss"
+  "editor.codeActionsOnSave": {
+    "source.fixAll.biome": "explicit"
   },
+  "editor.formatOnSave": true,
   "editor.quickSuggestions": {
     "strings": "on"
   },
+  "eslint.enable": false,
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "prettier.enable": false,
   "typescript.tsdk": "node_modules/typescript/lib"
 }

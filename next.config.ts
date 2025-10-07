@@ -1,27 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  async rewrites() {
-    return [
-      {
-        source: "/",
-        destination: "/yjty",
-      },
-    ];
-  },
-  async headers() {
-    return [
-      {
-        source: "/:path*{/}?",
-        headers: [
-          {
-            key: "X-Accel-Buffering",
-            value: "no",
-          },
-        ],
-      },
-    ];
-  },
   compiler: {
     removeConsole:
       process.env.NODE_ENV === "production"
@@ -34,24 +13,45 @@ const nextConfig: NextConfig = {
     position: "bottom-right",
   },
   experimental: {
-    ppr: true,
-    reactCompiler: true,
-    dynamicIO: true,
     authInterrupts: true,
+    cacheComponents: true,
+    ppr: true,
     serverActions: {
       bodySizeLimit: "1024mb",
     },
     useCache: true,
     viewTransition: true,
   },
-  output: "standalone",
+  async headers() {
+    return [
+      {
+        headers: [
+          {
+            key: "X-Accel-Buffering",
+            value: "no",
+          },
+        ],
+        source: "/:path*{/}?",
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {
-        protocol: "https",
         hostname: "aitools888.s3.ap-east-1.amazonaws.com",
+        protocol: "https",
       },
     ],
+  },
+  output: "standalone",
+  reactCompiler: true,
+  async rewrites() {
+    return [
+      {
+        destination: "/yjty",
+        source: "/",
+      },
+    ];
   },
 };
 

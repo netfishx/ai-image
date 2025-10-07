@@ -1,9 +1,9 @@
-import { getBackgroundImageStyle } from "@/app/bg";
-import { Button } from "@/components/ui/button";
-import { UserName } from "@/components/user-name";
 import { House, MenuSquare } from "lucide-react";
 import Link from "next/link";
 import { Suspense } from "react";
+import { getBackgroundImageStyle } from "@/app/bg";
+import { Button } from "@/components/ui/button";
+import { UserName } from "@/components/user-name";
 export function Header() {
   return (
     <div
@@ -15,16 +15,16 @@ export function Header() {
         <Suspense>
           <UserName />
         </Suspense>
-        <Button asChild size="sm" className="h-7 rounded-full bg-gold/80">
+        <Button asChild className="h-7 rounded-full bg-gold/80" size="sm">
           <Link href="/recharge">充值</Link>
         </Button>
       </div>
       <div className="flex items-center gap-2">
         <Button
-          className="bg-foreground/20 backdrop-blur-sm"
-          variant="secondary"
-          size="sm"
           asChild
+          className="bg-foreground/20 backdrop-blur-sm"
+          size="sm"
+          variant="secondary"
         >
           <Link href="/personal">个人中心</Link>
         </Button>

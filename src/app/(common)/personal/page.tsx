@@ -1,3 +1,7 @@
+import { Contact, ReceiptText, ShoppingCart, UserCog } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { Suspense } from "react";
 import { IdLink } from "@/app/(common)/personal/id-link";
 import { ShareLink } from "@/app/(common)/personal/share-link";
 import { getBackgroundImageStyle } from "@/app/bg";
@@ -6,10 +10,6 @@ import { Coins } from "@/components/coins";
 import { RefreshButton } from "@/components/refresh";
 import { Button } from "@/components/ui/button";
 import { getSession } from "@/lib/session";
-import { Contact, ReceiptText, ShoppingCart, UserCog } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { Suspense } from "react";
 
 export default function Personal() {
   return (
@@ -24,21 +24,21 @@ export default function Personal() {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Image
-              src={head}
-              width={40}
-              height={40}
               alt="avatar"
               className="rounded-full"
+              height={40}
+              src={head}
+              width={40}
             />
             <Suspense>
               <UserName />
             </Suspense>
           </div>
           <Button
-            variant="outline"
-            size="sm"
             asChild
             className="rounded-full opacity-50 dark:bg-transparent"
+            size="sm"
+            variant="outline"
           >
             <Link href="/login">登录账号</Link>
           </Button>
@@ -54,10 +54,10 @@ export default function Personal() {
         <div className="flex items-center justify-between">
           <div>我的钱包</div>
           <div className="flex gap-2">
-            <Button size="sm" className="rounded-full bg-gold" asChild>
+            <Button asChild className="rounded-full bg-gold" size="sm">
               <Link href="/recharge">立即充值</Link>
             </Button>
-            <Button size="sm" className="rounded-full bg-primary" asChild>
+            <Button asChild className="rounded-full bg-primary" size="sm">
               <Link href="/orders">交易记录</Link>
             </Button>
           </div>

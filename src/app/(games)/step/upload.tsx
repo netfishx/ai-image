@@ -1,10 +1,10 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { ImageIcon, X } from "lucide-react";
 import Image from "next/image";
 import { type ChangeEvent, useState } from "react";
 import { toast } from "sonner";
+import { cn } from "@/lib/utils";
 
 interface UploadButtonProps {
   maxSize?: number; // 单位：MB
@@ -59,17 +59,17 @@ export function Upload({ maxSize = 5, onFileSelect, name }: UploadButtonProps) {
       >
         {previewUrl && (
           <Image
-            src={previewUrl}
             alt="Uploaded image preview"
-            width={256}
-            height={160}
             className="rounded-lg object-cover"
+            height={160}
+            src={previewUrl}
+            width={256}
           />
         )}
         <button
-          type="button"
-          onClick={removeFile}
           className="absolute top-1 right-1 rounded-full bg-red-500 p-1 text-white"
+          onClick={removeFile}
+          type="button"
         >
           <X size={16} />
         </button>
@@ -81,11 +81,11 @@ export function Upload({ maxSize = 5, onFileSelect, name }: UploadButtonProps) {
         )}
       >
         <input
-          type="file"
-          className="hidden"
           accept="image/*"
-          onChange={handleFileInput}
+          className="hidden"
           name={name}
+          onChange={handleFileInput}
+          type="file"
         />
         <div>
           <ImageIcon className="size-8" />

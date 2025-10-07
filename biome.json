@@ -1,66 +1,80 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
-  "vcs": {
-    "enabled": true,
-    "clientKind": "git",
-    "useIgnoreFile": true
-  },
-  "files": {
-    "ignore": ["src/app/(dashboard)/personal/security/progress.module.css"]
-  },
-  "organizeImports": {
-    "enabled": true
-  },
-  "css": {
-    "linter": {
-      "enabled": true
-    },
-    "formatter": {
-      "enabled": true
-    }
-  },
-  "linter": {
-    "enabled": true,
-    "rules": {
-      "all": true,
-      "suspicious": {
-        "noReactSpecificProps": "off",
-        "noConsole": {
-          "level": "warn",
-          "options": {
-            "allow": ["info", "error", "warn", "dir", "group", "groupEnd"]
-          }
-        },
-        "useAwait": "off"
-      },
-      "a11y": {
-        "useKeyWithClickEvents": "info"
-      },
-      "correctness": {
-        "useExhaustiveDependencies": "warn",
-        "noNodejsModules": "off",
-        "useImportExtensions": "off"
-      },
-      "style": {
-        "noDefaultExport": "off",
-        "noImplicitBoolean": "off",
-        "useNamingConvention": "off",
-        "useFilenamingConvention": "off"
-      },
-      "complexity": {
-        "noForEach": "off",
-        "noExcessiveCognitiveComplexity": "off"
-      },
-      "security": {
-        "noDangerouslySetInnerHtml": "off"
-      },
-      "nursery": {
-        "useSortedClasses": "error"
+  "$schema": "https://biomejs.dev/schemas/2.2.5/schema.json",
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on",
+        "useSortedAttributes": "on",
+        "useSortedKeys": "on"
       }
     }
   },
+  "css": {
+    "formatter": {
+      "enabled": true
+    },
+    "linter": {
+      "enabled": true
+    }
+  },
+  "files": {
+    "includes": [
+      "**",
+      "!node_modules",
+      "!.next",
+      "!dist",
+      "!build"
+    ]
+  },
   "formatter": {
+    "indentStyle": "space",
+    "indentWidth": 2
+  },
+  "linter": {
+    "domains": {
+      "next": "recommended",
+      "project": "recommended",
+      "react": "recommended"
+    },
     "enabled": true,
-    "indentStyle": "space"
+    "rules": {
+      "nursery": {
+        "useSortedClasses": "warn"
+      },
+      "style": {
+        "noInferrableTypes": "error",
+        "noParameterAssign": "error",
+        "noUnusedTemplateLiteral": "error",
+        "noUselessElse": "error",
+        "useAsConstAssertion": "error",
+        "useDefaultParameterLast": "error",
+        "useEnumInitializers": "error",
+        "useNumberNamespace": "error",
+        "useSelfClosingElements": "error",
+        "useSingleVarDeclarator": "error"
+      },
+      "suspicious": {
+        "noArrayIndexKey": "off",
+        "noConsole": {
+          "level": "warn",
+          "options": {
+            "allow": [
+              "info",
+              "error",
+              "warn",
+              "dir",
+              "group",
+              "groupEnd"
+            ]
+          }
+        },
+        "noUnknownAtRules": "off"
+      }
+    }
+  },
+  "vcs": {
+    "clientKind": "git",
+    "enabled": true,
+    "useIgnoreFile": true
   }
 }

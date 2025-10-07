@@ -1,9 +1,8 @@
 "use client";
-import {} from "@/components/ui/dialog";
-import { idDialogAtom } from "@/lib/store";
 import { useSetAtom } from "jotai";
 import { IdCard } from "lucide-react";
 import Link from "next/link";
+import { idDialogAtom } from "@/lib/store";
 
 export function IdLink() {
   const setOpen = useSetAtom(idDialogAtom);

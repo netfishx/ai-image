@@ -1,7 +1,7 @@
+import { CircleDollarSign } from "lucide-react";
 import { Coins } from "@/components/coins";
 import { RefreshButton } from "@/components/refresh";
 import { getSession } from "@/lib/session";
-import { CircleDollarSign } from "lucide-react";
 
 export async function UserName() {
   const session = await getSession();

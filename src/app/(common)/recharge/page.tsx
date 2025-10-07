@@ -1,9 +1,9 @@
+import Image from "next/image";
+import { Suspense } from "react";
 import { getBackgroundImageStyle } from "@/app/bg";
 import head from "@/assets/head.png";
 import { Coins } from "@/components/coins";
 import { getSession } from "@/lib/session";
-import Image from "next/image";
-import { Suspense } from "react";
 import { RechargeForm } from "./form";
 
 export default function Recharge() {
@@ -15,11 +15,11 @@ export default function Recharge() {
       <div className="flex flex-col gap-4 rounded-lg bg-background/80 bg-cover p-4">
         <div className="flex items-center gap-2">
           <Image
-            src={head}
-            width={40}
-            height={40}
             alt="avatar"
             className="rounded-full"
+            height={40}
+            src={head}
+            width={40}
           />
           <Suspense>
             <UserInfo />

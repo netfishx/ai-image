@@ -1,5 +1,5 @@
-import { getUserInfo } from "@/lib/api";
 import { Suspense } from "react";
+import { getUserInfo } from "@/lib/api";
 import { GifForm } from "./form";
 
 export default function GifPage() {

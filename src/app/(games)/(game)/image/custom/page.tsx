@@ -1,6 +1,6 @@
+import { Suspense } from "react";
 import { ImageForm } from "@/app/(games)/(game)/image/custom/form";
 import { getUserInfo } from "@/lib/api";
-import { Suspense } from "react";
 export default function ImagePage() {
   return (
     <div className="flex flex-1 flex-col gap-4 px-2 py-4">

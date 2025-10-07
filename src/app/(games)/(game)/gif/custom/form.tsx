@@ -1,14 +1,14 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import Upload from "@/components/upload";
-import { gifConversion, upload } from "@/lib/api";
 import { Loader2, Minus } from "lucide-react";
 import Form from "next/form";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { type FormEvent, useRef, useTransition } from "react";
 import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
+import Upload from "@/components/upload";
+import { gifConversion, upload } from "@/lib/api";
 
 export function GifForm({ coins }: { coins: number }) {
   const ref = useRef<HTMLFormElement>(null);
@@ -68,28 +68,28 @@ export function GifForm({ coins }: { coins: number }) {
   return (
     <Form
       action=""
+      className="flex flex-col gap-4"
       onSubmit={handleSubmit}
       ref={ref}
-      className="flex flex-col gap-4"
     >
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Minus className="rotate-90" />
           请上传脸部照片
         </div>
-        <Button className="rounded-full" size="sm" asChild>
+        <Button asChild className="rounded-full" size="sm">
           <Link href="/gif">返回列表</Link>
         </Button>
       </div>
       <div>
-        <Upload type="image" name="image" />
+        <Upload name="image" type="image" />
       </div>
       <div className="flex items-center gap-2">
         <Minus className="rotate-90" />
         请上传原GIF
       </div>
       <div>
-        <Upload type="image" name="gif" maxSize={10} />
+        <Upload maxSize={10} name="gif" type="image" />
       </div>
       <div className="flex items-center justify-between gap-2 px-8 text-xs">
         <span>
@@ -102,7 +102,7 @@ export function GifForm({ coins }: { coins: number }) {
         <span>免费次数：0</span>
       </div>
       <div className="flex justify-center px-8">
-        <Button type="submit" className="w-full" disabled={isPending}>
+        <Button className="w-full" disabled={isPending} type="submit">
           {isPending && <Loader2 className="animate-spin" />}
           立刻制作
         </Button>

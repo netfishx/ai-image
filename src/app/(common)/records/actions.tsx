@@ -1,15 +1,15 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import { checkDownload, deleteOrder } from "@/lib/api";
-import { downloadAlertAtom } from "@/lib/store";
-import { cn } from "@/lib/utils";
 import { useSetAtom } from "jotai";
 import { ChevronDown, ChevronUp, Loader2 } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { checkDownload, deleteOrder } from "@/lib/api";
+import { downloadAlertAtom } from "@/lib/store";
+import { cn } from "@/lib/utils";
 
 export function Actions({
   url,
@@ -52,14 +52,14 @@ export function Actions({
     <>
       <div className="flex items-center justify-between px-6">
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="sm" className="px-0" asChild>
+          <Button asChild className="px-0" size="sm" variant="ghost">
             {url ? (
               <Button
-                variant="ghost"
-                size="sm"
                 className="px-0"
-                onClick={() => handleDownloadOrder(url)}
                 disabled={isDownloading}
+                onClick={() => handleDownloadOrder(url)}
+                size="sm"
+                variant="ghost"
               >
                 {isDownloading && <Loader2 className="animate-spin" />}
                 下载作品
@@ -69,11 +69,11 @@ export function Actions({
             )}
           </Button>
           <Button
-            variant="ghost"
-            size="sm"
             className="px-0"
-            onClick={handleDeleteOrder}
             disabled={isPending}
+            onClick={handleDeleteOrder}
+            size="sm"
+            variant="ghost"
           >
             {isPending && <Loader2 className="animate-spin" />}
             删除作品
@@ -81,11 +81,11 @@ export function Actions({
         </div>
         {url && (
           <Button
-            variant="ghost"
-            size="sm"
             className="group flex items-center gap-1 px-0 hover:opacity-80"
-            onClick={() => setIsOpen(!isOpen)}
             disabled={!url}
+            onClick={() => setIsOpen(!isOpen)}
+            size="sm"
+            variant="ghost"
           >
             点击查看
             {isOpen ? (
@@ -113,20 +113,20 @@ export function Actions({
                 {type === "video" ? (
                   <video
                     autoPlay
+                    className="object-contain"
+                    height={196}
                     muted
                     playsInline
                     src={url}
                     width={304}
-                    height={196}
-                    className="object-contain"
                   />
                 ) : (
                   <Image
-                    src={url}
                     alt="review"
+                    className="object-contain"
                     fill
                     sizes="100vw"
-                    className="object-contain"
+                    src={url}
                     unoptimized={type === "gif"}
                   />
                 )}

@@ -1,8 +1,8 @@
+import { getImageProps } from "next/image";
 import mainBg from "@/assets/main.jpg";
 import navBg from "@/assets/nav.jpg";
 import vipBg from "@/assets/vip.jpg";
 import walletBg from "@/assets/wallet_bg.jpg";
-import { getImageProps } from "next/image";
 
 function getBackgroundImage(srcSet = "") {
   const imageSet = srcSet
@@ -27,36 +27,36 @@ export function getBackgroundImageStyle(
     case "nav":
       params = getImageProps({
         alt: "",
-        width: 1920,
         height: 602,
         src: navBg,
+        width: 1920,
       });
       break;
 
     case "main":
       params = getImageProps({
         alt: "",
-        width: 800,
         height: 1420,
         src: mainBg,
+        width: 800,
       });
       break;
 
     case "vip":
       params = getImageProps({
         alt: "",
-        width: 1536,
         height: 400,
         src: vipBg,
+        width: 1536,
       });
       break;
 
     case "wallet":
       params = getImageProps({
         alt: "",
-        width: 914,
         height: 381,
         src: walletBg,
+        width: 914,
       });
       break;
     default:

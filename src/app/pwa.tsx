@@ -1,4 +1,6 @@
 "use client";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
 import {
   AlertDialog,
   AlertDialogContent,
@@ -8,8 +10,6 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
-import { toast } from "sonner";
 
 interface BeforeInstallPromptEvent extends Event {
   readonly platforms: string[];
@@ -150,9 +150,9 @@ export function PWAInstallDetector() {
             </ul>
             <AlertDialogFooter className="flex flex-row justify-center px-8">
               <Button
+                className="bg-foreground hover:bg-accent-foreground hover:text-accent"
                 onClick={closeAlert}
                 variant="outline"
-                className="bg-foreground hover:bg-accent-foreground hover:text-accent"
               >
                 知道了
               </Button>
@@ -163,9 +163,9 @@ export function PWAInstallDetector() {
             <p>将此应用安装到您的设备，获得更好的体验！</p>
             <AlertDialogFooter className="flex flex-row justify-between px-8">
               <Button
+                className="bg-foreground hover:bg-accent-foreground hover:text-accent"
                 onClick={closeAlert}
                 variant="outline"
-                className="bg-foreground hover:bg-accent-foreground hover:text-accent"
               >
                 稍后再说
               </Button>
@@ -177,9 +177,9 @@ export function PWAInstallDetector() {
             <p>您的浏览器可能不支持自动安装。</p>
             <AlertDialogFooter className="flex flex-row justify-center px-8">
               <Button
+                className="bg-foreground hover:bg-accent-foreground hover:text-accent"
                 onClick={closeAlert}
                 variant="outline"
-                className="bg-foreground hover:bg-accent-foreground hover:text-accent"
               >
                 知道了
               </Button>

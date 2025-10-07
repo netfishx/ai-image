@@ -1,9 +1,9 @@
+import type { ReactNode } from "react";
+import { Suspense } from "react";
 import { CommonHeader } from "@/app/(common)/common-header";
 import { IdDialog, ShareDialog } from "@/components/share";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { getSession } from "@/lib/session";
-import type { ReactNode } from "react";
-import { Suspense } from "react";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (

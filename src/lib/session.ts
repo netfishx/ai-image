@@ -1,9 +1,9 @@
-import { type User, UserSchema } from "@/lib/types";
 import { CborDecoderBase } from "@jsonjoy.com/json-pack/lib/cbor/CborDecoderBase";
 import { CborEncoder } from "@jsonjoy.com/json-pack/lib/cbor/CborEncoder";
 import LZString from "lz-string";
 import { cookies } from "next/headers";
 import { z } from "zod";
+import { type User, UserSchema } from "@/lib/types";
 
 const encoder = new CborEncoder();
 const decoder = new CborDecoderBase();

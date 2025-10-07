@@ -1,5 +1,10 @@
 "use client";
 
+import { useAtom } from "jotai";
+import { QRCodeSVG } from "qrcode.react";
+import { useRef } from "react";
+import { useCopyToClipboard } from "react-use";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -9,11 +14,6 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { idDialogAtom, shareDialogAtom } from "@/lib/store";
-import { useAtom } from "jotai";
-import { QRCodeSVG } from "qrcode.react";
-import { useRef } from "react";
-import { useCopyToClipboard } from "react-use";
-import { toast } from "sonner";
 
 export function ShareDialog({ username }: { username: string }) {
   const [open, setOpen] = useAtom(shareDialogAtom);
@@ -96,15 +96,15 @@ export function ShareDialog({ username }: { username: string }) {
   };
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog onOpenChange={setOpen} open={open}>
       <DialogContent className="bg-foreground text-background">
         <DialogHeader>
           <DialogTitle>分享获得下载次数</DialogTitle>
           <DialogDescription>用户名：{username}</DialogDescription>
           <div className="flex items-center justify-center p-4" ref={qrCodeRef}>
             <QRCodeSVG
-              value={`https://tuoyi.net?inviteCode=${username}`}
               className="size-50"
+              value={`https://tuoyi.net?inviteCode=${username}`}
             />
           </div>
           <div className="text-xs *:text-start">
@@ -215,15 +215,15 @@ export function IdDialog({ username }: { username: string }) {
   };
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog onOpenChange={setOpen} open={open}>
       <DialogContent className="bg-foreground text-background">
         <DialogHeader>
           <DialogTitle>身份凭证</DialogTitle>
           <DialogDescription>用户名：{username}</DialogDescription>
           <div className="flex items-center justify-center p-4" ref={qrCodeRef}>
             <QRCodeSVG
-              value={`https://tuoyi.net?inviteCode=${username}`}
               className="size-50"
+              value={`https://tuoyi.net?inviteCode=${username}`}
             />
           </div>
           <div className="text-xs *:text-start">

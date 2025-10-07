@@ -1,5 +1,12 @@
 "use client";
 
+import { useAtomValue } from "jotai";
+import { Loader2, Minus } from "lucide-react";
+import Form from "next/form";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { type FormEvent, useEffect, useRef, useTransition } from "react";
+import { toast } from "sonner";
 import { Upload } from "@/app/(games)/step/upload";
 import mb from "@/assets/mb.png";
 import { Button } from "@/components/ui/button";
@@ -12,13 +19,6 @@ import {
 import { resourceAtom } from "@/lib/store";
 import type { Res } from "@/lib/types";
 import { rgbDataURL } from "@/lib/utils";
-import { useAtomValue } from "jotai";
-import { Loader2, Minus } from "lucide-react";
-import Form from "next/form";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { type FormEvent, useEffect, useRef, useTransition } from "react";
-import { toast } from "sonner";
 export function UploadForm({ coins, type }: { coins: number; type: string }) {
   const resource = useAtomValue(resourceAtom);
   const ref = useRef<HTMLFormElement>(null);
@@ -83,21 +83,21 @@ export function UploadForm({ coins, type }: { coins: number; type: string }) {
     }
   }, [resource, router.replace]);
   return (
-    <Form action="" ref={ref} onSubmit={handleSubmit}>
+    <Form action="" onSubmit={handleSubmit} ref={ref}>
       <div className="p-4">
         <div className="relative h-50 w-full">
           <Image
+            alt="resource"
+            blurDataURL={rgbDataURL(200, 200, 200)}
+            className="rounded-lg object-cover"
+            fill
+            placeholder="blur"
+            sizes="100vw"
             src={
               type === "3"
                 ? (resource?.materialPreviewUrl ?? "")
                 : (resource?.materialUrl ?? "")
             }
-            alt="resource"
-            fill
-            placeholder="blur"
-            blurDataURL={rgbDataURL(200, 200, 200)}
-            className="rounded-lg object-cover"
-            sizes="100vw"
           />
         </div>
       </div>
@@ -111,7 +111,7 @@ export function UploadForm({ coins, type }: { coins: number; type: string }) {
       <div className="p-4">
         <div className="flex rounded-2xl bg-gradient-to-r from-neutral-100 to-sky-200 py-4">
           <div className="w-3/5 p-4">
-            <Image src={mb} alt="mb" width={424} height={292} />
+            <Image alt="mb" height={292} src={mb} width={424} />
           </div>
           <div className="flex-1 p-4">
             <Upload name="face" />
@@ -136,10 +136,10 @@ export function UploadForm({ coins, type }: { coins: number; type: string }) {
           </div>
           <div>
             <Button
-              type="submit"
               className="rounded-full bg-gold text-sm"
-              size="sm"
               disabled={isPending}
+              size="sm"
+              type="submit"
             >
               {isPending && <Loader2 className="animate-spin" />}
               开始制作

@@ -1,5 +1,4 @@
 "use server";
-import type { Res } from "@/lib/types";
 import axios from "axios";
 import {
   unstable_cacheLife as cacheLife,
@@ -7,6 +6,7 @@ import {
 } from "next/cache";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import type { Res } from "@/lib/types";
 
 const instance = axios.create({
   baseURL: process.env.BASE_URL,
@@ -49,9 +49,9 @@ async function request<T>({
   "use cache";
   if (typeof expire === "number") {
     cacheLife({
-      stale: expire,
-      revalidate: expire,
       expire: expire * 10,
+      revalidate: expire,
+      stale: expire,
     });
   } else {
     switch (expire) {
@@ -89,26 +89,26 @@ async function request<T>({
   };
   try {
     const res = await instance<Res<T>>({
-      url,
-      method,
-      headers,
       data,
+      headers,
+      method,
       params,
+      url,
     });
 
     result = {
-      status: res.status,
       data: res.data,
+      status: res.status,
     };
   } catch (error) {
     console.error(error);
 
     result = {
-      status: -1,
       data: {
         code: 500,
         msg: "服务繁忙，请稍后再试",
       },
+      status: -1,
     };
   }
 
@@ -139,15 +139,15 @@ export async function apiRequest<T>({
   const ip = nextHeaders.get("x-forwarded-for");
   const locale = nextHeaders.get("accept-language");
   const result = await request<T>({
-    url,
+    data,
+    expire,
+    header,
     ip,
     locale,
-    header,
     method,
     params,
-    data,
     token,
-    expire,
+    url,
   });
   console.group("request");
   if (result.status >= 400 || result.data.code !== 0) {
@@ -155,17 +155,17 @@ export async function apiRequest<T>({
   }
   console.dir(
     {
-      url,
+      data,
+      expire,
+      header,
       ip,
       locale,
-      header,
       method,
-      data,
       params,
-      token,
-      expire,
       result,
       time: performance.now() - start,
+      token,
+      url,
     },
     { depth: null },
   );

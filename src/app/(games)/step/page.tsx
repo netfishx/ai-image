@@ -1,6 +1,6 @@
-import { getUserInfo } from "@/lib/api";
 import { Minus } from "lucide-react";
 import { Suspense } from "react";
+import { getUserInfo } from "@/lib/api";
 import { UploadForm } from "./form";
 import { GoBack } from "./goback";
 

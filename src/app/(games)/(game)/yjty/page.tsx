@@ -1,8 +1,8 @@
-import sample from "@/assets/sample.jpg";
-import { getUserInfo } from "@/lib/api";
 import { Minus } from "lucide-react";
 import Image from "next/image";
 import { Suspense } from "react";
+import sample from "@/assets/sample.jpg";
+import { getUserInfo } from "@/lib/api";
 import { YjtyForm } from "./form";
 
 export default function YjtyPage() {
@@ -35,7 +35,7 @@ export default function YjtyPage() {
       </div>
       <div className="px-4">
         <div className="relative aspect-[5/3]">
-          <Image src={sample} alt="效果图" fill className="object-cover" />
+          <Image alt="效果图" className="object-cover" fill src={sample} />
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
-import { getBackgroundImageStyle } from "@/app/bg";
-import { getRechargeRecords } from "@/lib/api";
 import { AlertCircle } from "lucide-react";
 import { Suspense } from "react";
+import { getBackgroundImageStyle } from "@/app/bg";
+import { getRechargeRecords } from "@/lib/api";
 import { Time } from "./time";
 
 export default function OrdersPage() {
@@ -24,8 +24,8 @@ async function List() {
     <>
       {res.data?.map((item) => (
         <div
-          key={item.businessId}
           className="flex items-center justify-between gap-2 rounded-xl bg-foreground p-4 text-background"
+          key={item.businessId}
         >
           <div className="flex items-center gap-2">
             <AlertCircle className="size-8 text-green-500" />

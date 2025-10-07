@@ -1,8 +1,8 @@
 "use client";
 
-import { checkUser } from "@/lib/api";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
+import { checkUser } from "@/lib/api";
 export function CheckUser() {
   const searchParams = useSearchParams();
   const inviteCode = searchParams.get("inviteCode");

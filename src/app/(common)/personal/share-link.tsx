@@ -1,9 +1,9 @@
 "use client";
 
-import { shareDialogAtom } from "@/lib/store";
 import { useSetAtom } from "jotai";
 import { Share2 } from "lucide-react";
 import Link from "next/link";
+import { shareDialogAtom } from "@/lib/store";
 
 export function ShareLink() {
   const setOpen = useSetAtom(shareDialogAtom);
