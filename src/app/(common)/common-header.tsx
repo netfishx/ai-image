@@ -45,7 +45,7 @@ export function CommonHeader() {
       >
         <ArrowLeft className="size-7" />
       </Button>
-      <div className="-translate-x-1/2 absolute left-1/2 transform">
+      <div className="absolute left-1/2 -translate-x-1/2 transform">
         {title}
       </div>
     </div>

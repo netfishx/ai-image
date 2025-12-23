@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.2.5/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.3.10/schema.json",
   "assist": {
     "actions": {
       "source": {
@@ -15,16 +15,13 @@
     },
     "linter": {
       "enabled": true
+    },
+    "parser": {
+      "tailwindDirectives": true
     }
   },
   "files": {
-    "includes": [
-      "**",
-      "!node_modules",
-      "!.next",
-      "!dist",
-      "!build"
-    ]
+    "includes": ["**", "!node_modules", "!.next", "!dist", "!build"]
   },
   "formatter": {
     "indentStyle": "space",
@@ -32,21 +29,34 @@
   },
   "linter": {
     "domains": {
-      "next": "recommended",
-      "project": "recommended",
-      "react": "recommended"
+      "next": "all",
+      "project": "all",
+      "react": "all"
     },
     "enabled": true,
     "rules": {
+      "correctness": {
+        "useImportExtensions": "off",
+        "useUniqueElementIds": "off"
+      },
       "nursery": {
-        "useSortedClasses": "warn"
+        "useSortedClasses": {
+          "fix": "safe",
+          "level": "warn",
+          "options": {
+            "attributes": ["classList"],
+            "functions": ["cn", "clsx", "cva", "tw"]
+          }
+        }
       },
       "style": {
         "noInferrableTypes": "error",
+        "noNonNullAssertion": "off",
         "noParameterAssign": "error",
         "noUnusedTemplateLiteral": "error",
         "noUselessElse": "error",
         "useAsConstAssertion": "error",
+        "useComponentExportOnlyModules": "off",
         "useDefaultParameterLast": "error",
         "useEnumInitializers": "error",
         "useNumberNamespace": "error",
@@ -58,17 +68,9 @@
         "noConsole": {
           "level": "warn",
           "options": {
-            "allow": [
-              "info",
-              "error",
-              "warn",
-              "dir",
-              "group",
-              "groupEnd"
-            ]
+            "allow": ["info", "error", "warn", "dir", "group", "groupEnd"]
           }
-        },
-        "noUnknownAtRules": "off"
+        }
       }
     }
   },

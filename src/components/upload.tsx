@@ -106,28 +106,28 @@ export default function Upload({
   return (
     <div className="flex flex-col items-center">
       <div className={cn("relative bg-white", previewUrl ? "block" : "hidden")}>
-        {fileType === "image" ? (
-          <Image
-            // biome-ignore lint/style/noNonNullAssertion: <explanation>
-            alt="Uploaded image preview"
-            className="h-40 w-64 rounded-lg object-cover"
-            height={160}
-            src={previewUrl!}
-            width={256}
-          />
-        ) : (
-          <video
-            // biome-ignore lint/style/noNonNullAssertion: <explanation>
-            autoPlay
-            className="h-40 w-64 rounded-lg object-cover"
-            controls
-            muted
-            playsInline
-            src={previewUrl!}
-          >
-            <track kind="captions" />
-          </video>
-        )}
+        {previewUrl ? (
+          fileType === "image" ? (
+            <Image
+              alt="Uploaded image preview"
+              className="h-40 w-64 rounded-lg object-cover"
+              height={160}
+              src={previewUrl}
+              width={256}
+            />
+          ) : (
+            <video
+              autoPlay
+              className="h-40 w-64 rounded-lg object-cover"
+              controls
+              muted
+              playsInline
+              src={previewUrl}
+            >
+              <track kind="captions" />
+            </video>
+          )
+        ) : null}
         <button
           className="absolute top-1 right-1 rounded-full bg-red-500 p-1 text-white"
           onClick={removeFile}

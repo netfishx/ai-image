@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Provider as JotaiProvider } from "jotai";
-import {
-  type ReactNode,
-  Suspense,
-  unstable_ViewTransition as ViewTransition,
-} from "react";
+import { type ReactNode, Suspense, ViewTransition } from "react";
 import { CheckUser } from "@/app/check-user";
 import { Toaster } from "@/components/ui/sonner";
 import { PWAInstallDetector } from "./pwa";
