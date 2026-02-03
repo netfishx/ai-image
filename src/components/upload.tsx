@@ -108,7 +108,7 @@ export default function Upload({
       <div className={cn("relative bg-white", previewUrl ? "block" : "hidden")}>
         {fileType === "image" ? (
           <Image
-            // biome-ignore lint/style/noNonNullAssertion: <explanation>
+            // biome-ignore lint/style/noNonNullAssertion: preview URL checked before render
             alt="Uploaded image preview"
             className="h-40 w-64 rounded-lg object-cover"
             height={160}
@@ -117,7 +117,7 @@ export default function Upload({
           />
         ) : (
           <video
-            // biome-ignore lint/style/noNonNullAssertion: <explanation>
+            // biome-ignore lint/style/noNonNullAssertion: preview URL checked before render
             autoPlay
             className="h-40 w-64 rounded-lg object-cover"
             controls

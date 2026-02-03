@@ -1,9 +1,6 @@
 "use server";
 import axios from "axios";
-import {
-  unstable_cacheLife as cacheLife,
-  unstable_cacheTag as cacheTag,
-} from "next/cache";
+import { cacheLife, cacheTag } from "next/cache";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import type { Res } from "@/lib/types";
@@ -35,9 +32,9 @@ async function request<T>({
   locale?: string | null;
   header?: Record<string, string>;
   method?: string;
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  // biome-ignore lint/suspicious/noExplicitAny: dynamic API params/data
   params?: any;
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  // biome-ignore lint/suspicious/noExplicitAny: dynamic API params/data
   data?: any;
   token?: string;
   expire?: number | "minutes" | "days" | "hours";
@@ -127,9 +124,9 @@ export async function apiRequest<T>({
   url: string;
   header?: Record<string, string>;
   method?: string;
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  // biome-ignore lint/suspicious/noExplicitAny: dynamic API params/data
   params?: any;
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  // biome-ignore lint/suspicious/noExplicitAny: dynamic API params/data
   data?: any;
   token?: string;
   expire?: number | "minutes" | "days" | "hours";

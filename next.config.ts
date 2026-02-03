@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  cacheComponents: true,
   compiler: {
     removeConsole:
       process.env.NODE_ENV === "production"
@@ -13,13 +14,9 @@ const nextConfig: NextConfig = {
     position: "bottom-right",
   },
   experimental: {
-    authInterrupts: true,
-    cacheComponents: true,
-    ppr: true,
     serverActions: {
       bodySizeLimit: "1024mb",
     },
-    useCache: true,
     viewTransition: true,
   },
   async headers() {
