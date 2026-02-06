@@ -9,7 +9,6 @@ FROM base AS deps
 
 RUN --mount=type=bind,source=package.json,target=package.json \
     --mount=type=bind,source=bun.lock,target=bun.lock \
-    --mount=type=bind,source=patches/next@15.6.0-canary.47.patch,target=patches/next@15.6.0-canary.47.patch \
     --mount=type=cache,target=/root/.bun \
     bun install --frozen-lockfile
 
