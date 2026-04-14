@@ -8,17 +8,17 @@ build:
     - docker build -f Dockerfile.test -t 172.31.32.26:5555/ai-web:$CI_COMMIT_SHORT_SHA .
     - docker push 172.31.32.26:5555/ai-web:$CI_COMMIT_SHORT_SHA
 
-deploy:
-  stage: deploy
-  tags:
-    - ai-test
-  only:
-    - test
-  script:
-    - docker pull 172.31.32.26:5555/ai-web:$CI_COMMIT_SHORT_SHA
-    - docker stop ai-web || true
-    - docker rm ai-web || true
-    - docker run -d -p 4000:3000 --name ai-web --restart unless-stopped 172.31.32.26:5555/ai-web:$CI_COMMIT_SHORT_SHA
+# deploy:
+#   stage: deploy
+#   tags:
+#     - ai-test
+#   only:
+#     - test
+#   script:
+#     - docker pull 172.31.32.26:5555/ai-web:$CI_COMMIT_SHORT_SHA
+#     - docker stop ai-web || true
+#     - docker rm ai-web || true
+#     - docker run -d -p 4000:3000 --name ai-web --restart unless-stopped 172.31.32.26:5555/ai-web:$CI_COMMIT_SHORT_SHA
 
 build-prod:
   stage: build

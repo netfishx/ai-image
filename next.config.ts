@@ -14,7 +14,6 @@ const nextConfig: NextConfig = {
     position: "bottom-right",
   },
   experimental: {
-    authInterrupts: true,
     serverActions: {
       bodySizeLimit: "1024mb",
     },

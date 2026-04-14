@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.3.10/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.4.11/schema.json",
   "assist": {
     "actions": {
       "source": {
@@ -21,7 +21,14 @@
     }
   },
   "files": {
-    "includes": ["**", "!node_modules", "!.next", "!dist", "!build"]
+    "includes": [
+      "**",
+      "!node_modules",
+      "!.next",
+      "!dist",
+      "!build",
+      "!src/app/tw-animate.css"
+    ]
   },
   "formatter": {
     "indentStyle": "space",
@@ -29,34 +36,21 @@
   },
   "linter": {
     "domains": {
-      "next": "all",
-      "project": "all",
-      "react": "all"
+      "next": "recommended",
+      "project": "recommended",
+      "react": "recommended"
     },
     "enabled": true,
     "rules": {
-      "correctness": {
-        "useImportExtensions": "off",
-        "useUniqueElementIds": "off"
-      },
       "nursery": {
-        "useSortedClasses": {
-          "fix": "safe",
-          "level": "warn",
-          "options": {
-            "attributes": ["classList"],
-            "functions": ["cn", "clsx", "cva", "tw"]
-          }
-        }
+        "useSortedClasses": "warn"
       },
       "style": {
         "noInferrableTypes": "error",
-        "noNonNullAssertion": "off",
         "noParameterAssign": "error",
         "noUnusedTemplateLiteral": "error",
         "noUselessElse": "error",
         "useAsConstAssertion": "error",
-        "useComponentExportOnlyModules": "off",
         "useDefaultParameterLast": "error",
         "useEnumInitializers": "error",
         "useNumberNamespace": "error",
@@ -70,7 +64,8 @@
           "options": {
             "allow": ["info", "error", "warn", "dir", "group", "groupEnd"]
           }
-        }
+        },
+        "noUnknownAtRules": "off"
       }
     }
   },
